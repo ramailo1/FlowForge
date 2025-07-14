@@ -1,0 +1,32 @@
+{
+  "name": "flowforge",
+  "version": "1.0.0",
+  "description": "A Chrome extension that learns browsing sequences and suggests automations",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "jest",
+    "build": "echo \"No build step required\"",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "chrome-extension",
+    "automation",
+    "workflow",
+    "productivity"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.246",
+    "eslint": "^8.45.0",
+    "jest": "^29.6.1",
+    "jest-chrome": "^0.8.0",
+    "jest-environment-jsdom": "^29.6.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "jest-chrome"
+    ]
+  }
+}

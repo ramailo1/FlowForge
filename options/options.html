@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowForge Options</title>
+  <link href="../lib/tailwind.min.css" rel="stylesheet">
+  <link href="options.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- SVG Icon Definitions -->
+  <svg width="0" height="0" style="position:absolute;display:none;">
+    <symbol id="pencil-icon" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+      <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+    </symbol>
+    <symbol id="trash-icon" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+    </symbol>
+  </svg>
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 12h-4l-3 9L9 3l-3 9H2" />
+          </svg>
+          <h1 class="text-2xl font-bold">FlowForge Options</h1>
+        </div>
+        <a href="#" id="back-to-popup" class="text-white hover:text-indigo-100 flex items-center space-x-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>Back to Extension</span>
+        </a>
+      </div>
+    </header>
+    
+    <!-- Main content -->
+    <main class="flex-grow">
+      <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        <!-- Tabs -->
+        <div class="border-b border-gray-200">
+          <nav class="-mb-px flex space-x-8">
+            <a href="#" class="tab-link tab-button active" data-tab="flows">
+              <div class="border-indigo-500 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                Flows
+              </div>
+            </a>
+            <a href="#" class="tab-link tab-button" data-tab="settings">
+              <div class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                Settings
+              </div>
+            </a>
+            <a href="#" class="tab-link tab-button" data-tab="data">
+              <div class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                Data Management
+              </div>
+            </a>
+            <a href="#" class="tab-link tab-button" data-tab="about">
+              <div class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                About
+              </div>
+            </a>
+          </nav>
+        </div>
+        
+        <!-- Tab content -->
+        <div class="py-6">
+          <!-- Flows tab -->
+          <div id="flows-tab" class="tab-content active">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-lg font-medium text-gray-900">Manage Flows</h2>
+              <div class="flex space-x-2">
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                  <input type="text" id="search-input" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Search flows...">
+                </div>
+                <button id="create-flow-btn" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                  New Flow
+                </button>
+              </div>
+            </div>
+            
+            <!-- Flow list -->
+            <div class="bg-white shadow overflow-hidden sm:rounded-md">
+              <ul id="flow-list" class="divide-y divide-gray-200">
+                <!-- Flow items will be inserted here by JavaScript -->
+                <li class="px-6 py-4 text-center text-gray-500">Loading flows...</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Settings tab -->
+          <div id="settings-tab" class="tab-content hidden">
+            <h2 class="text-lg font-medium text-gray-900 mb-6">Extension Settings</h2>
+            <form id="settings-form">
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <div class="space-y-6">
+                  <!-- Detection sensitivity -->
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-900">Flow Detection Sensitivity</h3>
+                    <p class="mt-1 text-sm text-gray-500">Adjust how sensitive FlowForge is to detecting repeated navigation patterns.</p>
+                    <div class="mt-2">
+                      <select id="detection-sensitivity" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="low">Low (requires more repetitions)</option>
+                        <option value="medium" selected>Medium (default)</option>
+                        <option value="high">High (suggests flows more quickly)</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <!-- Notifications -->
+                  <div class="relative flex items-start">
+                    <div class="flex items-center h-5">
+                      <input id="notifications-enabled" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" checked>
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="notifications-enabled" class="font-medium text-gray-700">Enable Notifications</label>
+                      <p class="text-gray-500">Receive notifications when flows are detected or when automation suggestions are available.</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Encryption -->
+                  <div class="relative flex items-start">
+                    <div class="flex items-center h-5">
+                      <input id="encryption-enabled" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="encryption-enabled" class="font-medium text-gray-700">Enable Encryption</label>
+                      <p class="text-gray-500">Encrypt stored flow data for additional privacy. Note: This may slightly impact performance.</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Save button -->
+                  <div class="pt-5">
+                    <div class="flex justify-end">
+                      <button id="save-settings-btn" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Save Settings
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Data Management tab -->
+          <div id="data-tab" class="tab-content hidden">
+            <h2 class="text-lg font-medium text-gray-900 mb-6">Data Management</h2>
+            
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <div class="space-y-6">
+                  <!-- Export data -->
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-900">Export Data</h3>
+                    <p class="mt-1 text-sm text-gray-500">Export all your flows and settings as a JSON file.</p>
+                    <div class="mt-2">
+                      <button id="export-data-btn" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Export Data
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <!-- Import data -->
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-900">Import Data</h3>
+                    <p class="mt-1 text-sm text-gray-500">Import flows and settings from a previously exported JSON file.</p>
+                    <div class="mt-2">
+                      <label for="import-file" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                        Import Data
+                      </label>
+                      <input id="import-data-input" type="file" accept=".json" class="hidden">
+                    </div>
+                  </div>
+                  
+                  <!-- Clear data -->
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-900">Clear Data</h3>
+                    <p class="mt-1 text-sm text-gray-500">Delete all stored flows and reset settings. This action cannot be undone.</p>
+                    <div class="mt-2">
+                      <button id="clear-data-btn" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                        Clear All Data
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <!-- Clear history only -->
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-900">Clear Browsing History</h3>
+                    <p class="mt-1 text-sm text-gray-500">Clear only the browsing history used for flow detection. Your saved flows will remain intact.</p>
+                    <div class="mt-2">
+                      <button id="clear-history-btn" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        Clear History Only
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- About tab -->
+          <div id="about-tab" class="tab-content hidden">
+            <h2 class="text-lg font-medium text-gray-900 mb-6">About FlowForge</h2>
+            
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+              <div class="px-4 py-5 sm:p-6">
+                <div class="text-center mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-600 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                  </svg>
+                  <h3 class="mt-2 text-lg font-medium text-gray-900">FlowForge</h3>
+                  <p class="mt-1 text-sm text-gray-500">Version 1.0.0</p>
+                </div>
+                
+                <div class="prose prose-indigo max-w-none">
+                  <p>FlowForge is a browser extension that learns your browsing patterns and helps you automate repetitive sequences of navigation.</p>
+                  
+                  <h4>Key Features:</h4>
+                  <ul>
+                    <li>Automatically learns your browsing sequences across websites</li>
+                    <li>Suggests automations for frequently repeated sequences</li>
+                    <li>One-click execution of saved flows</li>
+                    <li>Privacy-focused with local storage and optional encryption</li>
+                  </ul>
+                  
+                  <h4>How to Use:</h4>
+                  <ol>
+                    <li>Browse normally - FlowForge will learn your patterns in the background</li>
+                    <li>When a pattern is detected, you'll see a suggestion to save it as a flow</li>
+                    <li>Access your saved flows from the extension popup</li>
+                    <li>Run flows with a single click to automate repetitive browsing tasks</li>
+                  </ol>
+                  
+                  <h4>Privacy:</h4>
+                  <p>FlowForge respects your privacy. All data is stored locally on your device and never sent to external servers. You can clear your browsing history at any time or enable encryption for additional security.</p>
+                  
+                  <div class="mt-8 border-t border-gray-200 pt-6 text-center">
+                    <h4 class="text-sm font-medium text-gray-900">Support the Developer</h4>
+                    <p class="mt-1 text-sm text-gray-500">If you enjoy FlowForge, consider supporting the developer.</p>
+                    <a href="https://coff.ee/soufienne" target="_blank" class="mt-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:scale-105">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                      Buy Me a Coffee
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <p class="text-center text-sm text-gray-500">&copy; 2023 FlowForge. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+  
+  <!-- Confirmation modal -->
+  <div id="confirm-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-xl max-w-md mx-4 overflow-hidden">
+      <div class="bg-red-600 text-white px-4 py-3 flex justify-between items-center">
+        <h3 class="text-lg font-medium" id="confirm-modal-title">Confirm Action</h3>
+        <button id="confirm-modal-close" class="text-white hover:text-red-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="p-4">
+        <p id="confirm-modal-message" class="text-gray-700">Are you sure you want to perform this action?</p>
+        <div class="mt-6 flex justify-end space-x-3">
+          <button id="confirm-modal-cancel" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Cancel
+          </button>
+          <button id="confirm-modal-confirm" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Toast notification -->
+  <div id="toast" class="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg transform transition-transform duration-300 translate-y-20 opacity-0 flex items-center">
+    <span id="toast-message">Action completed successfully</span>
+  </div>
+  
+  <!-- Create Flow Modal -->
+  <div id="create-flow-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 overflow-hidden">
+      <div class="bg-indigo-600 text-white px-4 py-3 flex justify-between items-center">
+        <h3 class="text-lg font-medium">Create New Flow</h3>
+        <button id="close-create-flow-modal" class="text-white hover:text-indigo-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="p-4">
+        <form id="create-flow-form">
+          <div class="space-y-4">
+            <div>
+              <label for="flow-name" class="block text-sm font-medium text-gray-700">Flow Name</label>
+              <input type="text" id="flow-name" name="flow-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="My Flow" required>
+            </div>
+            <div>
+              <label for="flow-description" class="block text-sm font-medium text-gray-700">Description (optional)</label>
+              <input type="text" id="flow-description" name="flow-description" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="What does this flow do?">
+            </div>
+            
+            <div>
+              <div class="flex justify-between items-center">
+                <label class="block text-sm font-medium text-gray-700">Flow Steps</label>
+                <div>
+                  <button type="button" id="add-step-btn" class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    Add Step
+                  </button>
+                  <button type="button" id="record-flow-btn" class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    </svg>
+                    Record Flow
+                  </button>
+                </div>
+              </div>
+              <div id="flow-steps" class="mt-2 space-y-2 max-h-60 overflow-y-auto p-2 border border-gray-200 rounded-md">
+                <div class="text-sm text-gray-500 italic">No steps added yet. Click "Add Step" or "Record Flow" above.</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 flex justify-end space-x-3">
+            <button type="button" id="cancel-create-flow" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Cancel
+            </button>
+            <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Create Flow
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Step Modal -->
+  <div id="add-step-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+      <div class="flex justify-between items-center pb-3">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Add Step</h3>
+        <button id="close-add-step-modal" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Close</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <form id="add-step-form">
+        <div class="mt-2">
+          <label for="step-url" class="block text-sm font-medium text-gray-700">URL</label>
+          <input type="url" id="step-url" name="step-url" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="https://example.com" required>
+        </div>
+        <div class="mt-4">
+          <label for="step-title" class="block text-sm font-medium text-gray-700">Title (Optional)</label>
+          <input type="text" id="step-title" name="step-title" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Page Title">
+        </div>
+        <div class="mt-4">
+          <label for="step-script" class="block text-sm font-medium text-gray-700">Script (Optional)</label>
+          <textarea id="step-script" name="step-script" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="JavaScript to execute on this page"></textarea>
+        </div>
+        <div class="mt-6 flex justify-end space-x-3">
+          <button type="button" id="cancel-add-step" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Cancel
+          </button>
+          <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Save Step
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Confirm Modal -->
+  <div id="confirm-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+      <div class="flex justify-between items-center pb-3">
+        <h3 id="confirm-modal-title" class="text-lg leading-6 font-medium text-gray-900"></h3>
+        <button id="confirm-modal-close" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Close</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mt-2">
+        <p id="confirm-modal-message" class="text-sm text-gray-500"></p>
+      </div>
+      <div class="mt-4 flex justify-end space-x-3">
+        <button type="button" id="confirm-modal-cancel" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Cancel
+        </button>
+        <button type="button" id="confirm-modal-confirm" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-gray-800 text-white text-sm py-2 px-4 rounded-md shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 ease-in-out z-50">
+    <span id="toast-message"></span>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

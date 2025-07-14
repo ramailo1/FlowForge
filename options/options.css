@@ -1,0 +1,145 @@
+/* FlowForge Options Styles */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Tab transitions */
+.tab-link div {
+  transition: all 0.2s ease;
+}
+
+/* Flow item hover effects */
+.flow-item {
+  transition: background-color 0.2s ease;
+}
+
+.flow-item:hover {
+  background-color: #f8fafc;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  transform-origin: top right;
+  animation: dropdown-appear 0.2s ease-out;
+}
+
+@keyframes dropdown-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Button hover effects */
+.run-flow-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.run-flow-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Modal animations */
+#confirmation-modal {
+  transition: opacity 0.2s ease;
+}
+
+#confirmation-modal > div {
+  transition: transform 0.2s ease;
+}
+
+#confirmation-modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#confirmation-modal:not(.hidden) > div {
+  animation: modal-appear 0.2s ease-out;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Toast animations */
+#toast {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Custom focus styles */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* Checkbox custom styles */
+input[type="checkbox"] {
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+}
+
+/* Tab content transitions */
+.tab-content {
+  transition: opacity 0.2s ease;
+}
+
+.tab-content.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.tab-content.active {
+  opacity: 1;
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .tab-link {
+    padding: 0 8px;
+  }
+}

@@ -1,0 +1,154 @@
+/* FlowForge Popup Styles */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  transform-origin: top right;
+  animation: dropdown-appear 0.2s ease-out;
+}
+
+@keyframes dropdown-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Flow card hover effects */
+.flow-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flow-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Button hover effects */
+.run-flow-btn {
+  transition: all 0.2s ease;
+}
+
+.run-flow-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Modal animations */
+#create-flow-modal,
+#add-step-modal {
+  transition: opacity 0.2s ease;
+}
+
+#create-flow-modal > div,
+#add-step-modal > div {
+  transition: transform 0.2s ease;
+}
+
+#create-flow-modal.hidden,
+#add-step-modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#create-flow-modal:not(.hidden) > div,
+#add-step-modal:not(.hidden) > div {
+  animation: modal-appear 0.2s ease-out;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Empty state animations */
+#empty-state svg {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Flow step animations */
+.flowforge-flow-step {
+  transition: all 0.2s ease;
+}
+
+.flowforge-flow-step:hover {
+  background-color: #f8fafc;
+}
+
+/* Custom focus styles */
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .w-[400px] {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Ensure minimum width for popup */
+body {
+  min-width: 400px;
+}
+
+/* Add these rules to popup.css */
+#create-flow-modal > div {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+#flow-steps {
+  max-height: 40vh;
+  min-height: 100px;
+}
+
+@media (max-width: 400px) {
+  #create-flow-modal > div {
+    width: 95%;
+    margin: 0 auto;
+  }
+}

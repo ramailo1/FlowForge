@@ -1,0 +1,359 @@
+/* FlowForge Content Styles */
+
+/* Base styles */
+:root {
+  --flowforge-primary: #4f46e5;
+  --flowforge-primary-dark: #4338ca;
+  --flowforge-secondary: #64748b;
+  --flowforge-success: #10b981;
+  --flowforge-error: #ef4444;
+  --flowforge-warning: #f59e0b;
+  --flowforge-info: #3b82f6;
+  --flowforge-text: #1e293b;
+  --flowforge-text-light: #64748b;
+  --flowforge-bg: #ffffff;
+  --flowforge-bg-light: #f8fafc;
+  --flowforge-border: #e2e8f0;
+  --flowforge-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --flowforge-radius: 8px;
+  --flowforge-transition: all 0.2s ease;
+}
+
+/* Reset styles for FlowForge elements */
+.flowforge-tracking-badge,
+.flowforge-suggestion-card,
+.flowforge-notification {
+  all: initial;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--flowforge-text);
+  box-sizing: border-box;
+}
+
+.flowforge-tracking-badge *,
+.flowforge-suggestion-card *,
+.flowforge-notification * {
+  box-sizing: border-box;
+}
+
+/* Tracking Badge */
+.flowforge-tracking-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: var(--flowforge-bg);
+  border-radius: var(--flowforge-radius);
+  box-shadow: var(--flowforge-shadow);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--flowforge-border);
+  transition: var(--flowforge-transition);
+  max-width: 200px;
+  opacity: 0.9;
+}
+
+.flowforge-tracking-badge:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.flowforge-badge-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flowforge-badge-icon {
+  color: var(--flowforge-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowforge-badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.flowforge-badge-text span:first-child {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.flowforge-step-count {
+  font-size: 11px;
+  color: var(--flowforge-text-light);
+}
+
+/* Suggestion Card */
+.flowforge-suggestion-card {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  background-color: var(--flowforge-bg);
+  border-radius: var(--flowforge-radius);
+  box-shadow: var(--flowforge-shadow);
+  width: 350px;
+  max-width: 90vw;
+  overflow: hidden;
+  border: 1px solid var(--flowforge-border);
+  animation: flowforge-slide-in 0.3s ease-out;
+}
+
+@keyframes flowforge-slide-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.flowforge-suggestion-header {
+  background-color: var(--flowforge-primary);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flowforge-suggestion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowforge-suggestion-title {
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+.flowforge-suggestion-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: var(--flowforge-transition);
+}
+
+.flowforge-suggestion-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.flowforge-suggestion-content {
+  padding: 16px;
+}
+
+.flowforge-suggestion-content p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+
+.flowforge-flow-preview {
+  background-color: var(--flowforge-bg-light);
+  border-radius: var(--flowforge-radius);
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--flowforge-border);
+}
+
+.flowforge-flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flowforge-flow-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flowforge-step-number {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--flowforge-primary);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowforge-step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowforge-step-info {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.flowforge-step-title {
+  font-weight: 500;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flowforge-step-url {
+  font-size: 11px;
+  color: var(--flowforge-text-light);
+}
+
+.flowforge-step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--flowforge-text-light);
+  padding: 4px 0;
+  margin-left: 10px;
+}
+
+.flowforge-suggestion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flowforge-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.flowforge-form-group label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.flowforge-form-group input {
+  padding: 8px 12px;
+  border-radius: var(--flowforge-radius);
+  border: 1px solid var(--flowforge-border);
+  font-size: 14px;
+  transition: var(--flowforge-transition);
+}
+
+.flowforge-form-group input:focus {
+  outline: none;
+  border-color: var(--flowforge-primary);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.flowforge-suggestion-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: var(--flowforge-bg-light);
+  border-top: 1px solid var(--flowforge-border);
+}
+
+.flowforge-btn {
+  padding: 8px 16px;
+  border-radius: var(--flowforge-radius);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--flowforge-transition);
+  border: none;
+}
+
+.flowforge-btn-primary {
+  background-color: var(--flowforge-primary);
+  color: white;
+}
+
+.flowforge-btn-primary:hover {
+  background-color: var(--flowforge-primary-dark);
+}
+
+.flowforge-btn-secondary {
+  background-color: var(--flowforge-bg);
+  color: var(--flowforge-text);
+  border: 1px solid var(--flowforge-border);
+}
+
+.flowforge-btn-secondary:hover {
+  background-color: var(--flowforge-bg-light);
+}
+
+/* Notifications */
+.flowforge-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10001;
+  background-color: var(--flowforge-bg);
+  border-radius: var(--flowforge-radius);
+  box-shadow: var(--flowforge-shadow);
+  padding: 12px 16px;
+  max-width: 300px;
+  border-left: 4px solid var(--flowforge-info);
+  animation: flowforge-fade-in 0.3s ease-out;
+  transition: var(--flowforge-transition);
+}
+
+@keyframes flowforge-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flowforge-notification-hiding {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.flowforge-notification-success {
+  border-left-color: var(--flowforge-success);
+}
+
+.flowforge-notification-error {
+  border-left-color: var(--flowforge-error);
+}
+
+.flowforge-notification-warning {
+  border-left-color: var(--flowforge-warning);
+}
+
+.flowforge-notification-info {
+  border-left-color: var(--flowforge-info);
+}
+
+.flowforge-notification-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flowforge-notification-message {
+  font-size: 14px;
+  flex-grow: 1;
+}
