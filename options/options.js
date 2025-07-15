@@ -126,7 +126,10 @@ function applyI18nMessages() {
   document.getElementById('export-data-btn').textContent = chrome.i18n.getMessage('exportDataButton');
   document.querySelector('#data-tab h3:nth-of-type(2)').textContent = chrome.i18n.getMessage('importDataHeader');
   document.querySelector('#data-tab p:nth-of-type(2)').textContent = chrome.i18n.getMessage('importDataDescription');
-  document.querySelector('label[for="import-file"]').textContent = chrome.i18n.getMessage('importDataButton');
+  const importFileLabel = document.querySelector('label[for="import-file"]');
+  if (importFileLabel) {
+    importFileLabel.textContent = chrome.i18n.getMessage('importDataButton');
+  }
   document.querySelector('#data-tab h3:nth-of-type(3)').textContent = chrome.i18n.getMessage('clearDataHeader');
   document.querySelector('#data-tab p:nth-of-type(3)').textContent = chrome.i18n.getMessage('clearDataDescription');
   document.getElementById('clear-data-btn').textContent = chrome.i18n.getMessage('clearDataButton');
