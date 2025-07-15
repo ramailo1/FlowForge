@@ -6,126 +6,152 @@
     <title>FlowForge - Automate Your Browsing</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6;
-            color: #333;
+            background-color: #e9ecef;
+            color: #343a40;
             line-height: 1.6;
         }
         .container {
             max-width: 960px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         header {
             text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 40px;
         }
         header h1 {
-            color: #0078d4;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            color: #0056b3;
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
         header p {
-            font-size: 1.1em;
-            color: #555;
+            font-size: 1.2em;
+            color: #6c757d;
         }
         section {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         h2 {
-            color: #0078d4;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #0078d4;
-            padding-bottom: 5px;
+            color: #0056b3;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #0056b3;
+            padding-bottom: 10px;
             display: inline-block;
+            font-weight: 600;
         }
         .button {
             display: inline-block;
-            background-color: #0078d4;
+            background-color: #007bff;
             color: #fff;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 15px 30px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 1.1em;
-            transition: background-color 0.3s ease;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
         }
         .button:hover {
-            background-color: #005a9e;
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
         .instructions ol {
             list-style-type: decimal;
-            padding-left: 20px;
+            padding-left: 25px;
         }
         .instructions li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.05em;
         }
         code {
-            background-color: #eef;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: 'Consolas', 'Monaco', monospace;
-            color: #c7254e;
+            background-color: #f8f9fa;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            color: #e83e8c;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #343a40;
+            color: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            border-radius: 0;
         }
         footer {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            margin-top: 30px;
-            color: #777;
-            font-size: 0.9em;
+            padding-top: 30px;
+            border-top: 1px solid #dee2e6;
+            margin-top: 40px;
+            color: #6c757d;
+            font-size: 1em;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+        ul li {
+            margin-bottom: 8px;
+            font-size: 1.05em;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Welcome to FlowForge</h1>
-            <p>Boost your productivity with the smart assistant that learns your daily browsing patterns and turns them into one-click workflow shortcuts.</p>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/flowforge/lmhmdhckpicbkiifnjcljjecgkpmejok" class="button" target="_blank">Get FlowForge from Microsoft Edge Addons</a>
+            <h1>FlowForge Browser Extension</h1>
+            <p>Seamlessly manage your Node-RED flows with the FlowForge extension.</p>
+            <a href="https://github.com/ramailo1/FlowForge" class="button" target="_blank">View on GitHub</a>
         </header>
 
-        <section>
-            <h2>About FlowForge</h2>
-            <p>Whether you're researching a topic, managing your tools, or navigating your favorite websites in a routine way, FlowForge observes your repeated actions and offers to automate them—no coding or setup required.</p>
-            <p>FlowForge passively detects patterns in your navigation across websites and suggests them as reusable “Flows”. It provides AI-powered suggestions, multi-step automations, and ensures privacy by keeping all data local on your device. You can also create custom Flows using its manual mode.</p>
-        </section>
-
         <section class="instructions">
-            <h2>How to Install from GitHub (for Developers)</h2>
-            <p>If you prefer to install FlowForge directly from the GitHub repository, follow these steps:</p>
+            <h2>Installation Guide</h2>
+            <p>Follow these simple steps to get the FlowForge extension up and running in your browser.</p>
             <ol>
                 <li>
-                    <strong>Clone the Repository:</strong> Open your terminal or command prompt and run the following command to clone the FlowForge repository:
+                    <h3>Step 1: Clone the Repository</h3>
+                    <p>Open your terminal or command prompt and execute the following command to clone the FlowForge repository to your local machine:</p>
                     <pre><code>git clone https://github.com/ramailo1/FlowForge.git</code></pre>
                 </li>
                 <li>
-                    <strong>Navigate to the Directory:</strong> Change into the cloned directory:
+                    <h3>Step 2: Navigate to the Directory</h3>
+                    <p>Change your current directory to the newly cloned FlowForge repository:</p>
                     <pre><code>cd FlowForge</code></pre>
                 </li>
                 <li>
-                    <strong>Load as Unpacked Extension in Edge:</strong>
+                    <h3>Step 3: Load as Unpacked Extension</h3>
+                    <p>This extension is designed to be loaded as an unpacked extension in Chromium-based browsers (e.g., Google Chrome, Microsoft Edge, Brave). Here's how:</p>
                     <ul>
-                        <li>Open Microsoft Edge.</li>
-                        <li>Go to <code>edge://extensions</code>.</li>
-                        <li>Turn on <strong>Developer mode</strong> (usually a toggle in the top right corner).</li>
-                        <li>Click on <strong>Load unpacked</strong>.</li>
-                        <li>Browse to the <code>FlowForge</code> directory you cloned (<code>f:\FlowForge</code>) and select it.</li>
-                        <li>The extension should now be loaded and visible in your extensions list.</li>
+                        <li>Open your browser and navigate to the extensions page.</li>
+                        <li>For Chrome, type <code>chrome://extensions</code> in the address bar.</li>
+                        <li>For Edge, type <code>edge://extensions</code> in the address bar.</li>
+                        <li>Enable <strong>Developer mode</strong> (usually a toggle switch in the top right corner).</li>
+                        <li>Click on the <strong>Load unpacked</strong> button.</li>
+                        <li>In the file dialog, select the <code>FlowForge</code> directory that you cloned in Step 1.</li>
+                        <li>The FlowForge extension should now appear in your list of extensions and be ready for use!</li>
                     </ul>
                 </li>
             </ol>
         </section>
 
         <footer>
-            <p>&copy; 2024 FlowForge. All rights reserved.</p>
+            <p>Developed with &#x2764; by FlowForge Team. &copy; 2023 All rights reserved.</p>
         </footer>
     </div>
 </body>
