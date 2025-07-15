@@ -25,7 +25,7 @@ const cancelStepBtn = document.getElementById('cancel-step-btn');
 // Function to apply internationalized messages to the UI
 function applyI18nMessages() {
 
-  document.getElementById('settingsTitle').textContent = chrome.i18n.getMessage('settingsTitle');
+
   document.getElementById('search-input').placeholder = chrome.i18n.getMessage('searchFlowsPlaceholder');
   document.getElementById('noFlowsYetHeader').textContent = chrome.i18n.getMessage('noFlowsYetHeader');
   document.getElementById('noFlowsYetDescription').textContent = chrome.i18n.getMessage('noFlowsYetDescription');
