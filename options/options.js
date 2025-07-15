@@ -147,7 +147,7 @@ function applyI18nMessages() {
   document.getElementById('stepsLabel').textContent = chrome.i18n.getMessage('stepsLabel');
   document.getElementById('noStepsAddedYet').textContent = chrome.i18n.getMessage('noStepsAddedYet');
   document.getElementById('addStepButton').textContent = chrome.i18n.getMessage('addStepButton');
-  document.getElementById('recordFlowButton').textContent = chrome.i18n.getMessage('recordFlowButton');
+
   document.getElementById('cancelCreateFlowButton').textContent = chrome.i18n.getMessage('cancelButton');
   document.getElementById('createFlowButtonModal').textContent = chrome.i18n.getMessage('createFlowButtonModal');
   document.getElementById('addStepModalTitle').textContent = chrome.i18n.getMessage('addStepModalTitle');
