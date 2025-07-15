@@ -81,6 +81,127 @@
   "addStepButtonModal": {
     "message": "Add Step"
   },
-    "description": "The description of the extension."
+  "backToExtension": {
+    "message": "Back to Extension"
+  },
+  "optionsTitle": {
+    "message": "FlowForge Options"
+  },
+  "flowsTab": {
+    "message": "Flows"
+  },
+  "settingsTab": {
+    "message": "Settings"
+  },
+  "dataManagementTab": {
+    "message": "Data Management"
+  },
+  "aboutTab": {
+    "message": "About"
+  },
+  "manageFlowsHeader": {
+    "message": "Manage Flows"
+  },
+  "newFlowButton": {
+    "message": "New Flow"
+  },
+  "extensionSettingsHeader": {
+    "message": "Extension Settings"
+  },
+  "languageSelectionLabel": {
+    "message": "Language"
+  },
+  "languageSelectionDescription": {
+    "message": "Select the language for the extension interface."
+  },
+  "flowDetectionSensitivityHeader": {
+    "message": "Flow Detection Sensitivity"
+  },
+  "flowDetectionSensitivityDescription": {
+    "message": "Adjust how sensitive FlowForge is to detecting repeated navigation patterns."
+  },
+  "sensitivityLow": {
+    "message": "Low (requires more repetitions)"
+  },
+  "sensitivityMedium": {
+    "message": "Medium (default)"
+  },
+  "sensitivityHigh": {
+    "message": "High (suggests flows more quickly)"
+  },
+  "enableNotificationsLabel": {
+    "message": "Enable Notifications"
+  },
+  "enableNotificationsDescription": {
+    "message": "Receive notifications when flows are detected or when automation suggestions are available."
+  },
+  "enableEncryptionLabel": {
+    "message": "Enable Encryption"
+  },
+  "enableEncryptionDescription": {
+    "message": "Encrypt stored flow data for additional privacy. Note: This may slightly impact performance."
+  },
+  "saveSettingsButton": {
+    "message": "Save Settings"
+  },
+  "dataManagementHeader": {
+    "message": "Data Management"
+  },
+  "exportDataHeader": {
+    "message": "Export Data"
+  },
+  "exportDataDescription": {
+    "message": "Export all your flows and settings as a JSON file."
+  },
+  "exportDataButton": {
+    "message": "Export Data"
+  },
+  "importDataHeader": {
+    "message": "Import Data"
+  },
+  "importDataDescription": {
+    "message": "Import flows and settings from a previously exported JSON file."
+  },
+  "importDataButton": {
+    "message": "Import Data"
+  },
+  "clearDataHeader": {
+    "message": "Clear Data"
+  },
+  "clearDataDescription": {
+    "message": "Delete all stored flows and reset settings. This action cannot be undone."
+  },
+  "clearDataButton": {
+    "message": "Clear Data"
+  },\
+  "clearHistoryButton": {
+    "message": "Clear History"
+  },
+  "aboutHeader": {
+    "message": "About FlowForge"
+  },
+  "versionInfo": {
+    "message": "Version {version}"
+  },
+  "developedBy": {
+    "message": "Developed by Your Name/Company"
+  },
+  "supportDevelopment": {
+    "message": "Support Development"
+  },
+  "privacyPolicy": {
+    "message": "Privacy Policy"
+  },
+  "termsOfService": {
+    "message": "Terms of Service"
+  },
+  "confirmModalTitle": {
+    "message": "Confirm Action"
+  },
+  "confirmButton": {
+    "message": "Confirm"
+  },
+  "toastMessage": {
+    "message": "Settings saved successfully!"
   }
 }

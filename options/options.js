@@ -5,6 +5,7 @@ const tabButtons = document.querySelectorAll('.tab-button');
 const tabContents = document.querySelectorAll('.tab-content');
 const flowList = document.getElementById('flow-list');
 const searchInput = document.getElementById('search-input');
+const languageSelect = document.getElementById('language-select');
 
 // Settings elements
 const settingsForm = document.getElementById('settings-form');
@@ -75,12 +76,14 @@ async function init() {
   // Load data
   await Promise.all([
     loadFlows(),
-    typeof loadSettings === 'function' ? loadSettings() : Promise.resolve()
+    loadSettings()
   ]);
   
   // Render UI
   renderFlows();
   renderSettings();
+  applyI18nMessages();
+  populateLanguageDropdown();
 }
 
 function renderSettings() {
@@ -88,17 +91,118 @@ function renderSettings() {
     detectionSensitivity.value = settings.detectionSensitivity || 'medium';
     notificationsEnabled.checked = settings.notificationsEnabled !== false;
     encryptionEnabled.checked = settings.encryptionEnabled || false;
+    if (languageSelect) {
+      languageSelect.value = settings.language || chrome.i18n.getUILanguage();
+    }
   }
 }
 
+function applyI18nMessages() {
+  document.getElementById('back-to-popup').textContent = chrome.i18n.getMessage('backToExtension');
+  document.querySelector('h1').textContent = chrome.i18n.getMessage('optionsTitle');
+  document.querySelector('.tab-button[data-tab="flows"] div').textContent = chrome.i18n.getMessage('flowsTab');
+  document.querySelector('.tab-button[data-tab="settings"] div').textContent = chrome.i18n.getMessage('settingsTab');
+  document.querySelector('.tab-button[data-tab="data"] div').textContent = chrome.i18n.getMessage('dataManagementTab');
+  document.querySelector('.tab-button[data-tab="about"] div').textContent = chrome.i18n.getMessage('aboutTab');
+  document.querySelector('#flows-tab h2').textContent = chrome.i18n.getMessage('manageFlowsHeader');
+  document.querySelector('#flows-tab #search-input').placeholder = chrome.i18n.getMessage('searchFlowsPlaceholder');
+  document.querySelector('#create-flow-btn').textContent = chrome.i18n.getMessage('newFlowButton');
+  document.querySelector('#settings-tab h2').textContent = chrome.i18n.getMessage('extensionSettingsHeader');
+  document.getElementById('languageSelectionLabel').textContent = chrome.i18n.getMessage('languageSelectionLabel');
+  document.getElementById('languageSelectionDescription').textContent = chrome.i18n.getMessage('languageSelectionDescription');
+  document.getElementById('flowDetectionSensitivityHeader').textContent = chrome.i18n.getMessage('flowDetectionSensitivityHeader');
+  document.getElementById('flowDetectionSensitivityDescription').textContent = chrome.i18n.getMessage('flowDetectionSensitivityDescription');
+  document.getElementById('sensitivityLow').textContent = chrome.i18n.getMessage('sensitivityLow');
+  document.getElementById('sensitivityMedium').textContent = chrome.i18n.getMessage('sensitivityMedium');
+  document.getElementById('sensitivityHigh').textContent = chrome.i18n.getMessage('sensitivityHigh');
+  document.getElementById('enableNotificationsLabel').textContent = chrome.i18n.getMessage('enableNotificationsLabel');
+  document.getElementById('enableNotificationsDescription').textContent = chrome.i18n.getMessage('enableNotificationsDescription');
+  document.getElementById('enableEncryptionLabel').textContent = chrome.i18n.getMessage('enableEncryptionLabel');
+  document.getElementById('enableEncryptionDescription').textContent = chrome.i18n.getMessage('enableEncryptionDescription');
+  document.getElementById('save-settings-btn').textContent = chrome.i18n.getMessage('saveSettingsButton');
+  document.querySelector('#data-tab h2').textContent = chrome.i18n.getMessage('dataManagementHeader');
+  document.querySelector('#data-tab h3:nth-of-type(1)').textContent = chrome.i18n.getMessage('exportDataHeader');
+  document.querySelector('#data-tab p:nth-of-type(1)').textContent = chrome.i18n.getMessage('exportDataDescription');
+  document.getElementById('export-data-btn').textContent = chrome.i18n.getMessage('exportDataButton');
+  document.querySelector('#data-tab h3:nth-of-type(2)').textContent = chrome.i18n.getMessage('importDataHeader');
+  document.querySelector('#data-tab p:nth-of-type(2)').textContent = chrome.i18n.getMessage('importDataDescription');
+  document.querySelector('label[for="import-file"]').textContent = chrome.i18n.getMessage('importDataButton');
+  document.querySelector('#data-tab h3:nth-of-type(3)').textContent = chrome.i18n.getMessage('clearDataHeader');
+  document.querySelector('#data-tab p:nth-of-type(3)').textContent = chrome.i18n.getMessage('clearDataDescription');
+  document.getElementById('clear-data-btn').textContent = chrome.i18n.getMessage('clearDataButton');
+  document.getElementById('clear-history-btn').textContent = chrome.i18n.getMessage('clearHistoryButton');
+  document.querySelector('#about-tab h2').textContent = chrome.i18n.getMessage('aboutHeader');
+  document.getElementById('versionInfo').textContent = chrome.i18n.getMessage('versionInfo', [chrome.runtime.getManifest().version]);
+  document.getElementById('developedBy').textContent = chrome.i18n.getMessage('developedBy');
+  document.getElementById('supportDevelopment').textContent = chrome.i18n.getMessage('supportDevelopment');
+  document.getElementById('buyMeACoffeeLink').textContent = chrome.i18n.getMessage('buyMeACoffee');
+  document.getElementById('privacyPolicyLink').textContent = chrome.i18n.getMessage('privacyPolicy');
+  document.getElementById('termsOfServiceLink').textContent = chrome.i18n.getMessage('termsOfService');
+  document.getElementById('confirm-modal-title').textContent = chrome.i18n.getMessage('confirmModalTitle');
+  document.getElementById('confirm-modal-cancel').textContent = chrome.i18n.getMessage('cancelButton');
+  document.getElementById('confirm-modal-confirm').textContent = chrome.i18n.getMessage('confirmButton');
+  document.getElementById('createFlowModalTitle').textContent = chrome.i18n.getMessage('createNewFlowModalTitle');
+  document.getElementById('flowNameLabel').textContent = chrome.i18n.getMessage('flowNameLabel');
+  document.getElementById('flowDescriptionLabel').textContent = chrome.i18n.getMessage('flowDescriptionLabel');
+  document.getElementById('stepsLabel').textContent = chrome.i18n.getMessage('stepsLabel');
+  document.getElementById('noStepsAddedYet').textContent = chrome.i18n.getMessage('noStepsAddedYet');
+  document.getElementById('addStepButton').textContent = chrome.i18n.getMessage('addStepButton');
+  document.getElementById('recordFlowButton').textContent = chrome.i18n.getMessage('recordFlowButton');
+  document.getElementById('cancelCreateFlowButton').textContent = chrome.i18n.getMessage('cancelButton');
+  document.getElementById('createFlowButtonModal').textContent = chrome.i18n.getMessage('createFlowButtonModal');
+  document.getElementById('addStepModalTitle').textContent = chrome.i18n.getMessage('addStepModalTitle');
+  document.getElementById('urlLabel').textContent = chrome.i18n.getMessage('urlLabel');
+  document.getElementById('stepTitleLabel').textContent = chrome.i18n.getMessage('stepTitleLabel');
+  document.getElementById('customScriptLabel').textContent = chrome.i18n.getMessage('customScriptLabel');
+  document.getElementById('customScriptDescription').textContent = chrome.i18n.getMessage('customScriptDescription');
+  document.getElementById('addStepButtonModal').textContent = chrome.i18n.getMessage('addStepButtonModal');
+  document.getElementById('cancelAddStepButton').textContent = chrome.i18n.getMessage('cancelButton');
+  document.getElementById('toast-message').textContent = chrome.i18n.getMessage('toastMessage');
+}
+
+
 async function loadSettings() {
   try {
-    const response = await chrome.storage.local.get('settings');
+    const response = await chrome.storage.sync.get('settings');
     settings = response.settings || {};
   } catch (error) {
     console.error('Settings loading error:', error);
     showToast('Failed to load settings');
   }
+}
+
+async function handleLanguageChange(event) {
+  const newLanguage = event.target.value;
+  settings.language = newLanguage;
+  await chrome.storage.sync.set({ settings });
+  // Reload the extension to apply language changes
+  chrome.runtime.reload();
+}
+
+async function populateLanguageDropdown() {
+  const acceptLanguages = await chrome.i18n.getAcceptLanguages();
+  const currentUILanguage = chrome.i18n.getUILanguage();
+
+  // Add current UI language first if not already in acceptLanguages
+  if (!acceptLanguages.includes(currentUILanguage)) {
+    acceptLanguages.unshift(currentUILanguage);
+  }
+
+  languageSelect.innerHTML = ''; // Clear existing options
+
+  for (const lang of acceptLanguages) {
+    const option = document.createElement('option');
+    option.value = lang;
+    option.textContent = lang; // Display the language code for now
+    if (lang === (settings.language || currentUILanguage)) {
+      option.selected = true;
+    }
+    languageSelect.appendChild(option);
+  }
+
+  // Optionally, add more user-friendly names for common languages
+  // This would require a mapping or more sophisticated i18n setup
+  // For now, just using the language code
 }
 
 function setupEventListeners() {
@@ -121,6 +225,7 @@ function setupEventListeners() {
 
   // Settings form
   if (settingsForm) settingsForm.addEventListener('submit', handleSettingsSave);
+  if (languageSelect) languageSelect.addEventListener('change', handleLanguageChange);
   
   // Export/Import data
   if (exportDataBtn) exportDataBtn.addEventListener('click', handleExportData);

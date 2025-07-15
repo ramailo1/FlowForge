@@ -106,15 +106,26 @@
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
               <div class="px-4 py-5 sm:p-6">
                 <div class="space-y-6">
+                  <!-- Language Selection -->
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-900" id="languageSelectionLabel">__MSG_languageSelectionLabel__</h3>
+                    <p class="mt-1 text-sm text-gray-500" id="languageSelectionDescription">__MSG_languageSelectionDescription__</p>
+                    <div class="mt-2">
+                      <select id="language-select" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <!-- Options will be populated by JavaScript -->
+                      </select>
+                    </div>
+                  </div>
+
                   <!-- Detection sensitivity -->
                   <div>
-                    <h3 class="text-sm font-medium text-gray-900">Flow Detection Sensitivity</h3>
-                    <p class="mt-1 text-sm text-gray-500">Adjust how sensitive FlowForge is to detecting repeated navigation patterns.</p>
+                    <h3 class="text-sm font-medium text-gray-900" id="flowDetectionSensitivityHeader">__MSG_flowDetectionSensitivityHeader__</h3>
+                    <p class="mt-1 text-sm text-gray-500" id="flowDetectionSensitivityDescription">__MSG_flowDetectionSensitivityDescription__</p>
                     <div class="mt-2">
                       <select id="detection-sensitivity" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                        <option value="low">Low (requires more repetitions)</option>
-                        <option value="medium" selected>Medium (default)</option>
-                        <option value="high">High (suggests flows more quickly)</option>
+                        <option value="low" id="sensitivityLow">__MSG_sensitivityLow__</option>
+                        <option value="medium" id="sensitivityMedium" selected>__MSG_sensitivityMedium__</option>
+                        <option value="high" id="sensitivityHigh">__MSG_sensitivityHigh__</option>
                       </select>
                     </div>
                   </div>
@@ -125,8 +136,8 @@
                       <input id="notifications-enabled" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" checked>
                     </div>
                     <div class="ml-3 text-sm">
-                      <label for="notifications-enabled" class="font-medium text-gray-700">Enable Notifications</label>
-                      <p class="text-gray-500">Receive notifications when flows are detected or when automation suggestions are available.</p>
+                      <label for="notifications-enabled" class="font-medium text-gray-700" id="enableNotificationsLabel">__MSG_enableNotificationsLabel__</label>
+                      <p class="text-gray-500" id="enableNotificationsDescription">__MSG_enableNotificationsDescription__</p>
                     </div>
                   </div>
                   
@@ -136,8 +147,8 @@
                       <input id="encryption-enabled" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
                     </div>
                     <div class="ml-3 text-sm">
-                      <label for="encryption-enabled" class="font-medium text-gray-700">Enable Encryption</label>
-                      <p class="text-gray-500">Encrypt stored flow data for additional privacy. Note: This may slightly impact performance.</p>
+                      <label for="encryption-enabled" class="font-medium text-gray-700" id="enableEncryptionLabel">__MSG_enableEncryptionLabel__</label>
+                      <p class="text-gray-500" id="enableEncryptionDescription">__MSG_enableEncryptionDescription__</p>
                     </div>
                   </div>
                   
@@ -145,7 +156,7 @@
                   <div class="pt-5">
                     <div class="flex justify-end">
                       <button id="save-settings-btn" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Save Settings
+                        __MSG_saveSettingsButton__
                       </button>
                     </div>
                   </div>
