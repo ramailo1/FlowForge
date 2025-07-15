@@ -30,10 +30,7 @@ function applyI18nMessages() {
   document.getElementById('noFlowsYetHeader').textContent = chrome.i18n.getMessage('noFlowsYetHeader');
   document.getElementById('noFlowsYetDescription').textContent = chrome.i18n.getMessage('noFlowsYetDescription');
   document.getElementById('create-first-flow-btn').textContent = chrome.i18n.getMessage('createFlowButton');
-  document.getElementById('footerText').textContent = chrome.i18n.getMessage('footerText');
-  document.getElementById('optionsLink').textContent = chrome.i18n.getMessage('optionsLink');
-  document.getElementById('supportDeveloperTitle').textContent = chrome.i18n.getMessage('supportDeveloperTitle');
-  document.getElementById('buyMeACoffee').textContent = chrome.i18n.getMessage('buyMeACoffee');
+
   document.getElementById('createNewFlowModalTitle').textContent = chrome.i18n.getMessage('createNewFlowModalTitle');
   document.getElementById('flowNameLabel').textContent = chrome.i18n.getMessage('flowNameLabel');
   document.getElementById('flowDescriptionLabel').textContent = chrome.i18n.getMessage('flowDescriptionLabel');
