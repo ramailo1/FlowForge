@@ -22,31 +22,36 @@ const closeStepModalBtn = document.getElementById('close-step-modal-btn');
 const addStepForm = document.getElementById('add-step-form');
 const cancelStepBtn = document.getElementById('cancel-step-btn');
 
-  const createNewFlowTitle = chrome.i18n.getMessage('createNewFlowTitle');
-  const settingsTitle = chrome.i18n.getMessage('settingsTitle');
-  const searchFlowsPlaceholder = chrome.i18n.getMessage('searchFlowsPlaceholder');
-  const noFlowsYetHeader = chrome.i18n.getMessage('noFlowsYetHeader');
-  const noFlowsYetDescription = chrome.i18n.getMessage('noFlowsYetDescription');
-  const createFlowButton = chrome.i18n.getMessage('createFlowButton');
-  const footerText = chrome.i18n.getMessage('footerText');
-  const optionsLink = chrome.i18n.getMessage('optionsLink');
-  const supportDeveloperTitle = chrome.i18n.getMessage('supportDeveloperTitle');
-  const buyMeACoffee = chrome.i18n.getMessage('buyMeACoffee');
-  const createNewFlowModalTitle = chrome.i18n.getMessage('createNewFlowModalTitle');
-  const flowNameLabel = chrome.i18n.getMessage('flowNameLabel');
-  const flowDescriptionLabel = chrome.i18n.getMessage('flowDescriptionLabel');
-  const stepsLabel = chrome.i18n.getMessage('stepsLabel');
-  const noStepsAddedYet = chrome.i18n.getMessage('noStepsAddedYet');
-  const addStepButton = chrome.i18n.getMessage('addStepButton');
-  const recordFlowButton = chrome.i18n.getMessage('recordFlowButton');
-  const cancelButton = chrome.i18n.getMessage('cancelButton');
-  const createFlowButtonModal = chrome.i18n.getMessage('createFlowButtonModal');
-  const addStepModalTitle = chrome.i18n.getMessage('addStepModalTitle');
-  const urlLabel = chrome.i18n.getMessage('urlLabel');
-  const stepTitleLabel = chrome.i18n.getMessage('stepTitleLabel');
-  const customScriptLabel = chrome.i18n.getMessage('customScriptLabel');
-  const customScriptDescription = chrome.i18n.getMessage('customScriptDescription');
-  const addStepButtonModal = chrome.i18n.getMessage('addStepButtonModal');
+// Function to apply internationalized messages to the UI
+function applyI18nMessages() {
+  document.getElementById('createNewFlowTitle').textContent = chrome.i18n.getMessage('createNewFlowTitle');
+  document.getElementById('settingsTitle').textContent = chrome.i18n.getMessage('settingsTitle');
+  document.getElementById('search-input').placeholder = chrome.i18n.getMessage('searchFlowsPlaceholder');
+  document.getElementById('noFlowsYetHeader').textContent = chrome.i18n.getMessage('noFlowsYetHeader');
+  document.getElementById('noFlowsYetDescription').textContent = chrome.i18n.getMessage('noFlowsYetDescription');
+  document.getElementById('create-first-flow-btn').textContent = chrome.i18n.getMessage('createFlowButton');
+  document.getElementById('footerText').textContent = chrome.i18n.getMessage('footerText');
+  document.getElementById('optionsLink').textContent = chrome.i18n.getMessage('optionsLink');
+  document.getElementById('supportDeveloperTitle').textContent = chrome.i18n.getMessage('supportDeveloperTitle');
+  document.getElementById('buyMeACoffee').textContent = chrome.i18n.getMessage('buyMeACoffee');
+  document.getElementById('createNewFlowModalTitle').textContent = chrome.i18n.getMessage('createNewFlowModalTitle');
+  document.getElementById('flowNameLabel').textContent = chrome.i18n.getMessage('flowNameLabel');
+  document.getElementById('flowDescriptionLabel').textContent = chrome.i18n.getMessage('flowDescriptionLabel');
+  document.getElementById('stepsLabel').textContent = chrome.i18n.getMessage('stepsLabel');
+  document.getElementById('noStepsAddedYet').textContent = chrome.i18n.getMessage('noStepsAddedYet');
+  document.getElementById('addStepButton').textContent = chrome.i18n.getMessage('addStepButton');
+  document.getElementById('recordFlowBtn').textContent = chrome.i18n.getMessage('recordFlowButton');
+  document.getElementById('cancelFlowBtn').textContent = chrome.i18n.getMessage('cancelButton');
+  document.getElementById('createFlowBtnModal').textContent = chrome.i18n.getMessage('createFlowButtonModal');
+  document.getElementById('addStepModalTitle').textContent = chrome.i18n.getMessage('addStepModalTitle');
+  document.getElementById('urlLabel').textContent = chrome.i18n.getMessage('urlLabel');
+  document.getElementById('stepTitleLabel').textContent = chrome.i18n.getMessage('stepTitleLabel');
+  document.getElementById('customScriptLabel').textContent = chrome.i18n.getMessage('customScriptLabel');
+  document.getElementById('customScriptDescription').textContent = chrome.i18n.getMessage('customScriptDescription');
+  document.getElementById('addStepButtonModal').textContent = chrome.i18n.getMessage('addStepButtonModal');
+}
+
+// State
 
 // State
 let flows = [];
@@ -71,6 +76,9 @@ async function init() {
       showCreateFlowModal(); // Automatically show recording progress
     }
   });
+
+  // Apply internationalized messages
+  applyI18nMessages();
 
   // Load flows
   await loadFlows();
