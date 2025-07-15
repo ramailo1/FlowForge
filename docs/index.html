@@ -4,182 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>FlowForge - Automate Your Browsing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #f8f9fa, #e9ecef);
-            color: #343a40;
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 60px auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        header {
-            text-align: center;
-            padding-bottom: 30px;
-            margin-bottom: 50px;
-            border-bottom: 2px solid #dee2e6;
-        }
-
-        header h1 {
-            color: #0d6efd;
-            font-size: 3.2em;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 1.2em;
-            color: #6c757d;
-        }
-
-        .button {
-            display: inline-block;
-            background: linear-gradient(to right, #0d6efd, #6610f2);
-            color: #fff;
-            padding: 15px 35px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 1.1em;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .button:hover {
-            background: linear-gradient(to right, #0a58ca, #520dc2);
-            transform: translateY(-3px);
-        }
-
-        section {
-            margin-bottom: 50px;
-        }
-
-        h2 {
-            font-size: 2.2em;
-            color: #0d6efd;
-            font-weight: 600;
-            border-left: 6px solid #0d6efd;
-            padding-left: 15px;
-            margin-bottom: 25px;
-        }
-
-        h3 {
-            font-size: 1.25em;
-            margin-bottom: 8px;
-            color: #495057;
-        }
-
-        .instructions ol {
-            padding-left: 30px;
-        }
-
-        .instructions li {
-            margin-bottom: 20px;
-            font-size: 1.05em;
-        }
-
-        ul {
-            padding-left: 30px;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-        }
-
-        code {
-            background-color: #f1f3f5;
-            color: #d63384;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-        }
-
-        pre {
-            background-color: #212529;
-            color: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            overflow-x: auto;
-        }
-
-        pre code {
-            color: inherit;
-            background-color: transparent;
-        }
-
-        footer {
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 60px;
-            font-size: 1em;
-            color: #adb5bd;
-            border-top: 1px solid #dee2e6;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>FlowForge Browser Extension</h1>
-            <p>Seamlessly manage your Node-RED flows with elegance and efficiency.</p>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/flowforge/lmhmdhckpicbkiifnjcljjecgkpmejok" class="button" target="_blank">Get FlowForge from Microsoft Edge Addons</a>
-            <a href="https://github.com/ramailo1/FlowForge" class="button" target="_blank">View on GitHub</a>
-        </header>
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <header>
+                <h1>FlowForge</h1>
+                <p class="subtitle">Elevate your Node-RED flows with seamless automation and style.</p>
+                <div class="button-group">
+                    <a href="https://microsoftedge.microsoft.com/addons/detail/flowforge/lmhmdhckpicbkiifnjcljjecgkpmejok" class="button primary" target="_blank">Get FlowForge</a>
+                    <a href="https://github.com/ramailo1/FlowForge" class="button secondary" target="_blank">View on GitHub</a>
+                </div>
+            </header>
+        </div>
+    </div>
 
+    <div class="container">
         <section class="instructions">
             <h2>Installation Guide</h2>
-            <p>Follow these simple steps to get started with FlowForge:</p>
-            <ol>
-                <li>
-                    <h3>Step 1: Clone the Repository</h3>
-                    <p>Open your terminal and run:</p>
+            <p class="section-intro">Get started with FlowForge in just a few steps.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Clone the Repository</h3>
+                    <p>Start by cloning the FlowForge repository to your local machine.</p>
                     <pre><code>git clone https://github.com/ramailo1/FlowForge.git</code></pre>
-                </li>
-                <li>
-                    <h3>Step 2: Navigate to the Directory</h3>
-                    <p>Switch to the cloned folder:</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Navigate to Directory</h3>
+                    <p>Move into the FlowForge folder to access the project files.</p>
                     <pre><code>cd FlowForge</code></pre>
-                </li>
-                <li>
-                    <h3>Step 3: Load as Unpacked Extension</h3>
-                    <p>Steps for Chromium-based browsers:</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Load as Unpacked Extension</h3>
+                    <p>Install FlowForge in your Chromium-based browser.</p>
                     <ul>
-                        <li>Open your browser and go to the extensions page.</li>
-                        <li>Chrome: <code>chrome://extensions</code></li>
-                        <li>Edge: <code>edge://extensions</code></li>
-                        <li>Enable <strong>Developer mode</strong> (top right).</li>
-                        <li>Click <strong>Load unpacked</strong>.</li>
-                        <li>Select the <code>FlowForge</code> directory.</li>
-                        <li>You're ready to go!</li>
+                        <li>Open <code>chrome://extensions</code> or <code>edge://extensions</code>.</li>
+                        <li>Enable <strong>Developer mode</strong>.</li>
+                        <li>Click <strong>Load unpacked</strong> and select the <code>FlowForge</code> folder.</li>
+                        <li>Enjoy FlowForge!</li>
                     </ul>
-                </li>
-            </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Why FlowForge?</h2>
+            <p class="section-intro">Discover the power of effortless automation.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Seamless Integration</h3>
+                    <p>Works flawlessly with Node-RED for streamlined workflows.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Intuitive Interface</h3>
+                    <p>Designed for simplicity, so you can focus on what matters.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Open Source</h3>
+                    <p>Contribute to FlowForge and join our vibrant community.</p>
+                </div>
+            </div>
         </section>
 
         <footer>
-            <p>Developed with ❤️ by the FlowForge Team &middot; &copy; 2025 All rights reserved.</p>
+            <p>Built with passion by the FlowForge Team · © 2025</p>
         </footer>
     </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in sections on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
