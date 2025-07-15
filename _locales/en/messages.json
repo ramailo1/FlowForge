@@ -1,0 +1,86 @@
+{
+  "extensionName": {
+    "message": "FlowForge",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Learn and automate your browsing sequences across websites"
+  },
+  "createNewFlowTitle": {
+    "message": "Create New Flow"
+  },
+  "settingsTitle": {
+    "message": "Settings"
+  },
+  "searchFlowsPlaceholder": {
+    "message": "Search flows..."
+  },
+  "noFlowsYetHeader": {
+    "message": "No flows yet"
+  },
+  "noFlowsYetDescription": {
+    "message": "Start browsing to automatically detect flows or create one manually."
+  },
+  "createFlowButton": {
+    "message": "Create Flow"
+  },
+  "footerText": {
+    "message": "FlowForge v1.0.0"
+  },
+  "optionsLink": {
+    "message": "Options"
+  },
+  "supportDeveloperTitle": {
+    "message": "Support the developer"
+  },
+  "buyMeACoffee": {
+    "message": "Buy Me a Coffee"
+  },
+  "createNewFlowModalTitle": {
+    "message": "Create New Flow"
+  },
+  "flowNameLabel": {
+    "message": "Flow Name"
+  },
+  "flowDescriptionLabel": {
+    "message": "Description (optional)"
+  },
+  "stepsLabel": {
+    "message": "Steps"
+  },
+  "noStepsAddedYet": {
+    "message": "No steps added yet. Click \"Add Step\" below."
+  },
+  "addStepButton": {
+    "message": "Add Step"
+  },
+  "recordFlowButton": {
+    "message": "Record Flow"
+  },
+  "cancelButton": {
+    "message": "Cancel"
+  },
+  "createFlowButtonModal": {
+    "message": "Create Flow"
+  },
+  "addStepModalTitle": {
+    "message": "Add Step"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "stepTitleLabel": {
+    "message": "Title (optional)"
+  },
+  "customScriptLabel": {
+    "message": "Custom Script (optional)"
+  },
+  "customScriptDescription": {
+    "message": "This script will run after the page loads."
+  },
+  "addStepButtonModal": {
+    "message": "Add Step"
+  },
+    "description": "The description of the extension."
+  }
+}

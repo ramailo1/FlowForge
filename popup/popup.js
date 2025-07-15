@@ -22,6 +22,32 @@ const closeStepModalBtn = document.getElementById('close-step-modal-btn');
 const addStepForm = document.getElementById('add-step-form');
 const cancelStepBtn = document.getElementById('cancel-step-btn');
 
+  const createNewFlowTitle = chrome.i18n.getMessage('createNewFlowTitle');
+  const settingsTitle = chrome.i18n.getMessage('settingsTitle');
+  const searchFlowsPlaceholder = chrome.i18n.getMessage('searchFlowsPlaceholder');
+  const noFlowsYetHeader = chrome.i18n.getMessage('noFlowsYetHeader');
+  const noFlowsYetDescription = chrome.i18n.getMessage('noFlowsYetDescription');
+  const createFlowButton = chrome.i18n.getMessage('createFlowButton');
+  const footerText = chrome.i18n.getMessage('footerText');
+  const optionsLink = chrome.i18n.getMessage('optionsLink');
+  const supportDeveloperTitle = chrome.i18n.getMessage('supportDeveloperTitle');
+  const buyMeACoffee = chrome.i18n.getMessage('buyMeACoffee');
+  const createNewFlowModalTitle = chrome.i18n.getMessage('createNewFlowModalTitle');
+  const flowNameLabel = chrome.i18n.getMessage('flowNameLabel');
+  const flowDescriptionLabel = chrome.i18n.getMessage('flowDescriptionLabel');
+  const stepsLabel = chrome.i18n.getMessage('stepsLabel');
+  const noStepsAddedYet = chrome.i18n.getMessage('noStepsAddedYet');
+  const addStepButton = chrome.i18n.getMessage('addStepButton');
+  const recordFlowButton = chrome.i18n.getMessage('recordFlowButton');
+  const cancelButton = chrome.i18n.getMessage('cancelButton');
+  const createFlowButtonModal = chrome.i18n.getMessage('createFlowButtonModal');
+  const addStepModalTitle = chrome.i18n.getMessage('addStepModalTitle');
+  const urlLabel = chrome.i18n.getMessage('urlLabel');
+  const stepTitleLabel = chrome.i18n.getMessage('stepTitleLabel');
+  const customScriptLabel = chrome.i18n.getMessage('customScriptLabel');
+  const customScriptDescription = chrome.i18n.getMessage('customScriptDescription');
+  const addStepButtonModal = chrome.i18n.getMessage('addStepButtonModal');
+
 // State
 let flows = [];
 let filteredFlows = [];
