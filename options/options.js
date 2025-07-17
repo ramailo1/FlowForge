@@ -12,6 +12,7 @@ const settingsForm = document.getElementById('settings-form');
 const detectionSensitivity = document.getElementById('detection-sensitivity');
 const notificationsEnabled = document.getElementById('notifications-enabled');
 const encryptionEnabled = document.getElementById('encryption-enabled');
+const darkModeEnabled = document.getElementById('dark-mode-enabled');
 
 // Data management elements
 const exportDataBtn = document.getElementById('export-data-btn');
@@ -68,10 +69,26 @@ if (backToPopupBtn) {
   });
 }
 
+function toggleDarkMode() {
+  if (darkModeEnabled.checked) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+}
+
 async function init() {
   console.log('DOM fully loaded, checking importDataInput:', importDataInput);
   // Set up event listeners
   setupEventListeners();
+
+  // Add event listener for reload extension button
+  const reloadExtensionBtn = document.getElementById('reload-extension-btn');
+  if (reloadExtensionBtn) {
+    reloadExtensionBtn.addEventListener('click', () => {
+      chrome.runtime.reload();
+    });
+  }
   
   // Load data
   await Promise.all([
@@ -91,76 +108,355 @@ function renderSettings() {
     detectionSensitivity.value = settings.detectionSensitivity || 'medium';
     notificationsEnabled.checked = settings.notificationsEnabled !== false;
     encryptionEnabled.checked = settings.encryptionEnabled || false;
-    if (languageSelect) {
-      languageSelect.value = settings.language || chrome.i18n.getUILanguage();
+    if (darkModeEnabled) {
+      darkModeEnabled.checked = settings.darkModeEnabled || false;
     }
+    if (languageSelect) {
+      languageSelect.value = settings.language || 'en'; // Default to English if no language is set
+    }
+    toggleDarkMode(); // Apply dark mode immediately on settings render
   }
 }
 
-function applyI18nMessages() {
-  document.getElementById('back-to-popup').textContent = chrome.i18n.getMessage('backToExtension');
-  document.querySelector('h1').textContent = chrome.i18n.getMessage('optionsTitle');
-  document.querySelector('.tab-button[data-tab="flows"] div').textContent = chrome.i18n.getMessage('flowsTab');
-  document.querySelector('.tab-button[data-tab="settings"] div').textContent = chrome.i18n.getMessage('settingsTab');
-  document.querySelector('.tab-button[data-tab="data"] div').textContent = chrome.i18n.getMessage('dataManagementTab');
-  document.querySelector('.tab-button[data-tab="about"] div').textContent = chrome.i18n.getMessage('aboutTab');
-  document.querySelector('#flows-tab h2').textContent = chrome.i18n.getMessage('manageFlowsHeader');
-  document.querySelector('#flows-tab #search-input').placeholder = chrome.i18n.getMessage('searchFlowsPlaceholder');
-  document.querySelector('#create-flow-btn').textContent = chrome.i18n.getMessage('newFlowButton');
-  document.querySelector('#settings-tab h2').textContent = chrome.i18n.getMessage('extensionSettingsHeader');
-  document.getElementById('languageSelectionLabel').textContent = chrome.i18n.getMessage('languageSelectionLabel');
-  document.getElementById('languageSelectionDescription').textContent = chrome.i18n.getMessage('languageSelectionDescription');
-  document.getElementById('flowDetectionSensitivityHeader').textContent = chrome.i18n.getMessage('flowDetectionSensitivityHeader');
-  document.getElementById('flowDetectionSensitivityDescription').textContent = chrome.i18n.getMessage('flowDetectionSensitivityDescription');
-  document.getElementById('sensitivityLow').textContent = chrome.i18n.getMessage('sensitivityLow');
-  document.getElementById('sensitivityMedium').textContent = chrome.i18n.getMessage('sensitivityMedium');
-  document.getElementById('sensitivityHigh').textContent = chrome.i18n.getMessage('sensitivityHigh');
-  document.getElementById('enableNotificationsLabel').textContent = chrome.i18n.getMessage('enableNotificationsLabel');
-  document.getElementById('enableNotificationsDescription').textContent = chrome.i18n.getMessage('enableNotificationsDescription');
-  document.getElementById('enableEncryptionLabel').textContent = chrome.i18n.getMessage('enableEncryptionLabel');
-  document.getElementById('enableEncryptionDescription').textContent = chrome.i18n.getMessage('enableEncryptionDescription');
-  document.getElementById('save-settings-btn').textContent = chrome.i18n.getMessage('saveSettingsButton');
-  document.querySelector('#data-tab h2').textContent = chrome.i18n.getMessage('dataManagementHeader');
-  document.querySelector('#data-tab h3:nth-of-type(1)').textContent = chrome.i18n.getMessage('exportDataHeader');
-  document.querySelector('#data-tab p:nth-of-type(1)').textContent = chrome.i18n.getMessage('exportDataDescription');
-  document.getElementById('export-data-btn').textContent = chrome.i18n.getMessage('exportDataButton');
-  document.querySelector('#data-tab h3:nth-of-type(2)').textContent = chrome.i18n.getMessage('importDataHeader');
-  document.querySelector('#data-tab p:nth-of-type(2)').textContent = chrome.i18n.getMessage('importDataDescription');
+async function loadLocaleMessages(locale) {
+  try {
+    const url = chrome.runtime.getURL(`_locales/${locale}/messages.json`);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to load messages for locale ${locale}: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(`Error loading locale messages for ${locale}:`, error);
+    // Fallback to default locale if loading fails
+    const defaultUrl = chrome.runtime.getURL(`_locales/en/messages.json`);
+    const defaultResponse = await fetch(defaultUrl);
+    return await defaultResponse.json();
+  }
+}
+
+async function applyI18nMessages() {
+  const currentLanguage = settings.language || 'en'; // Default to English if no language is set
+  const messages = await loadLocaleMessages(currentLanguage);
+
+  const getMessage = (key) => messages[key]?.message || `__MSG_${key}__`;
+
+  document.title = getMessage('optionsTitle');
+
+  const backToPopupBtn = document.getElementById('back-to-popup');
+  if (backToPopupBtn) {
+    backToPopupBtn.textContent = getMessage('backToExtension');
+  }
+
+  const h1Title = document.querySelector('h1');
+  if (h1Title) {
+    h1Title.textContent = getMessage('optionsTitle');
+  }
+
+  const flowsTabDiv = document.querySelector('.tab-button[data-tab="flows"] div');
+  if (flowsTabDiv) {
+    flowsTabDiv.textContent = getMessage('flowsTab');
+  }
+
+  const settingsTabDiv = document.querySelector('.tab-button[data-tab="settings"] div');
+  if (settingsTabDiv) {
+    settingsTabDiv.textContent = getMessage('settingsTab');
+  }
+
+  const dataManagementTabDiv = document.querySelector('.tab-button[data-tab="data"] div');
+  if (dataManagementTabDiv) {
+    dataManagementTabDiv.textContent = getMessage('dataManagementTab');
+  }
+
+  const aboutTabDiv = document.querySelector('.tab-button[data-tab="about"] div');
+  if (aboutTabDiv) {
+    aboutTabDiv.textContent = getMessage('aboutTab');
+  }
+
+  const flowsTabH2 = document.querySelector('#flows-tab h2');
+  if (flowsTabH2) {
+    flowsTabH2.textContent = getMessage('manageFlowsHeader');
+  }
+
+  const searchInputPlaceholder = document.querySelector('#flows-tab #search-input');
+  if (searchInputPlaceholder) {
+    searchInputPlaceholder.placeholder = getMessage('searchFlowsPlaceholder');
+  }
+
+  const createFlowBtn = document.querySelector('#create-flow-btn');
+  if (createFlowBtn) {
+    createFlowBtn.textContent = getMessage('newFlowButton');
+  }
+
+  const settingsTabH2 = document.querySelector('#settings-tab h2');
+  if (settingsTabH2) {
+    settingsTabH2.textContent = getMessage('extensionSettingsHeader');
+  }
+
+  const languageSelectionLabel = document.getElementById('languageSelectionLabel');
+  if (languageSelectionLabel) {
+    languageSelectionLabel.textContent = getMessage('languageSelectionLabel');
+  }
+
+  const languageSelectionDescription = document.getElementById('languageSelectionDescription');
+  if (languageSelectionDescription) {
+    languageSelectionDescription.textContent = getMessage('languageSelectionDescription');
+  }
+
+  const flowDetectionSensitivityHeader = document.getElementById('flowDetectionSensitivityHeader');
+  if (flowDetectionSensitivityHeader) {
+    flowDetectionSensitivityHeader.textContent = getMessage('flowDetectionSensitivityHeader');
+  }
+
+  const flowDetectionSensitivityDescription = document.getElementById('flowDetectionSensitivityDescription');
+  if (flowDetectionSensitivityDescription) {
+    flowDetectionSensitivityDescription.textContent = getMessage('flowDetectionSensitivityDescription');
+  }
+
+  const sensitivityLow = document.getElementById('sensitivityLow');
+  if (sensitivityLow) {
+    sensitivityLow.textContent = getMessage('sensitivityLow');
+  }
+
+  const sensitivityMedium = document.getElementById('sensitivityMedium');
+  if (sensitivityMedium) {
+    sensitivityMedium.textContent = getMessage('sensitivityMedium');
+  }
+
+  const sensitivityHigh = document.getElementById('sensitivityHigh');
+  if (sensitivityHigh) {
+    sensitivityHigh.textContent = getMessage('sensitivityHigh');
+  }
+
+  const enableNotificationsLabel = document.getElementById('enableNotificationsLabel');
+  if (enableNotificationsLabel) {
+    enableNotificationsLabel.textContent = getMessage('enableNotificationsLabel');
+  }
+
+  const enableNotificationsDescription = document.getElementById('enableNotificationsDescription');
+  if (enableNotificationsDescription) {
+    enableNotificationsDescription.textContent = getMessage('enableNotificationsDescription');
+  }
+
+  const enableEncryptionLabel = document.getElementById('enableEncryptionLabel');
+  if (enableEncryptionLabel) {
+    enableEncryptionLabel.textContent = getMessage('enableEncryptionLabel');
+  }
+
+  const enableEncryptionDescription = document.getElementById('enableEncryptionDescription');
+  if (enableEncryptionDescription) {
+    enableEncryptionDescription.textContent = getMessage('enableEncryptionDescription');
+  }
+
+  enableDarkModeLabel = document.getElementById('enableDarkModeLabel');
+  if (enableDarkModeLabel) {
+    enableDarkModeLabel.textContent = getMessage('enableDarkModeLabel');
+  }
+
+  enableDarkModeDescription = document.getElementById('enableDarkModeDescription');
+  if (enableDarkModeDescription) {
+    enableDarkModeDescription.textContent = getMessage('enableDarkModeDescription');
+  }
+
+  const saveSettingsBtn = document.getElementById('save-settings-btn');
+  if (saveSettingsBtn) {
+    saveSettingsBtn.textContent = getMessage('saveSettingsButton');
+  }
+
+  const dataTabH2 = document.querySelector('#data-tab h2');
+  if (dataTabH2) {
+    dataTabH2.textContent = getMessage('dataManagementHeader');
+  }
+
+  const exportDataHeader = document.querySelector('#data-tab h3:nth-of-type(1)');
+  if (exportDataHeader) {
+    exportDataHeader.textContent = chrome.i18n.getMessage('exportDataHeader');
+  }
+
+  const exportDataDescription = document.querySelector('#data-tab p:nth-of-type(1)');
+  if (exportDataDescription) {
+    exportDataDescription.textContent = chrome.i18n.getMessage('exportDataDescription');
+  }
+
+  const exportDataBtn = document.getElementById('export-data-btn');
+  if (exportDataBtn) {
+    exportDataBtn.textContent = getMessage('exportDataButton');
+  }
+
+  const importDataHeader = document.querySelector('#data-tab h3:nth-of-type(2)');
+  if (importDataHeader) {
+    importDataHeader.textContent = chrome.i18n.getMessage('importDataHeader');
+  }
+
+  const importDataDescription = document.querySelector('#data-tab p:nth-of-type(2)');
+  if (importDataDescription) {
+    importDataDescription.textContent = chrome.i18n.getMessage('importDataDescription');
+  }
+
   const importFileLabel = document.querySelector('label[for="import-file"]');
   if (importFileLabel) {
-    importFileLabel.textContent = chrome.i18n.getMessage('importDataButton');
+    importFileLabel.textContent = getMessage('importDataButton');
   }
-  document.querySelector('#data-tab h3:nth-of-type(3)').textContent = chrome.i18n.getMessage('clearDataHeader');
-  document.querySelector('#data-tab p:nth-of-type(3)').textContent = chrome.i18n.getMessage('clearDataDescription');
-  document.getElementById('clear-data-btn').textContent = chrome.i18n.getMessage('clearDataButton');
-  document.getElementById('clear-history-btn').textContent = chrome.i18n.getMessage('clearHistoryButton');
-  document.querySelector('#about-tab h2').textContent = chrome.i18n.getMessage('aboutHeader');
-  document.getElementById('versionInfo').textContent = chrome.i18n.getMessage('versionInfo', [chrome.runtime.getManifest().version]);
-  document.getElementById('developedBy').textContent = chrome.i18n.getMessage('developedBy');
-  document.getElementById('supportDevelopment').textContent = chrome.i18n.getMessage('supportDevelopment');
-  document.getElementById('buyMeACoffeeLink').textContent = chrome.i18n.getMessage('buyMeACoffee');
-  document.getElementById('privacyPolicyLink').textContent = chrome.i18n.getMessage('privacyPolicy');
-  document.getElementById('termsOfServiceLink').textContent = chrome.i18n.getMessage('termsOfService');
-  document.getElementById('confirm-modal-title').textContent = chrome.i18n.getMessage('confirmModalTitle');
-  document.getElementById('confirm-modal-cancel').textContent = chrome.i18n.getMessage('cancelButton');
-  document.getElementById('confirm-modal-confirm').textContent = chrome.i18n.getMessage('confirmButton');
-  document.getElementById('createFlowModalTitle').textContent = chrome.i18n.getMessage('createNewFlowModalTitle');
-  document.getElementById('flowNameLabel').textContent = chrome.i18n.getMessage('flowNameLabel');
-  document.getElementById('flowDescriptionLabel').textContent = chrome.i18n.getMessage('flowDescriptionLabel');
-  document.getElementById('stepsLabel').textContent = chrome.i18n.getMessage('stepsLabel');
-  document.getElementById('noStepsAddedYet').textContent = chrome.i18n.getMessage('noStepsAddedYet');
-  document.getElementById('addStepButton').textContent = chrome.i18n.getMessage('addStepButton');
 
-  document.getElementById('cancelCreateFlowButton').textContent = chrome.i18n.getMessage('cancelButton');
-  document.getElementById('createFlowButtonModal').textContent = chrome.i18n.getMessage('createFlowButtonModal');
-  document.getElementById('addStepModalTitle').textContent = chrome.i18n.getMessage('addStepModalTitle');
-  document.getElementById('urlLabel').textContent = chrome.i18n.getMessage('urlLabel');
-  document.getElementById('stepTitleLabel').textContent = chrome.i18n.getMessage('stepTitleLabel');
-  document.getElementById('customScriptLabel').textContent = chrome.i18n.getMessage('customScriptLabel');
-  document.getElementById('customScriptDescription').textContent = chrome.i18n.getMessage('customScriptDescription');
-  document.getElementById('addStepButtonModal').textContent = chrome.i18n.getMessage('addStepButtonModal');
-  document.getElementById('cancelAddStepButton').textContent = chrome.i18n.getMessage('cancelButton');
-  document.getElementById('toast-message').textContent = chrome.i18n.getMessage('toastMessage');
+  const clearDataHeader = document.querySelector('#data-tab h3:nth-of-type(3)');
+  if (clearDataHeader) {
+    clearDataHeader.textContent = chrome.i18n.getMessage('clearDataHeader');
+  }
+
+  const clearDataDescription = document.querySelector('#data-tab p:nth-of-type(3)');
+  if (clearDataDescription) {
+    clearDataDescription.textContent = chrome.i18n.getMessage('clearDataDescription');
+  }
+
+  const clearDataBtn = document.getElementById('clear-data-btn');
+  if (clearDataBtn) {
+    clearDataBtn.textContent = chrome.i18n.getMessage('clearDataButton');
+  }
+
+  const clearHistoryBtn = document.getElementById('clear-history-btn');
+  if (clearHistoryBtn) {
+    clearHistoryBtn.textContent = chrome.i18n.getMessage('clearHistoryButton');
+  }
+
+  const aboutTabH2 = document.querySelector('#about-tab h2');
+  if (aboutTabH2) {
+    aboutTabH2.textContent = getMessage('aboutHeader');
+  }
+
+  const versionInfo = document.getElementById('versionInfo');
+  if (versionInfo) {
+    versionInfo.textContent = getMessage('versionInfo', [chrome.runtime.getManifest().version]);
+  }
+
+  const developedBy = document.getElementById('developedBy');
+  if (developedBy) {
+    developedBy.textContent = chrome.i18n.getMessage('developedBy');
+  }
+
+  const supportDevelopment = document.getElementById('supportDevelopment');
+  if (supportDevelopment) {
+    supportDevelopment.textContent = chrome.i18n.getMessage('supportDevelopment');
+  }
+
+  const buyMeACoffeeLink = document.getElementById('buyMeACoffeeLink');
+  if (buyMeACoffeeLink) {
+    buyMeACoffeeLink.textContent = chrome.i18n.getMessage('buyMeACoffee');
+  }
+
+  const privacyPolicyLink = document.getElementById('privacyPolicyLink');
+  if (privacyPolicyLink) {
+    privacyPolicyLink.textContent = chrome.i18n.getMessage('privacyPolicy');
+  }
+
+  const termsOfServiceLink = document.getElementById('termsOfServiceLink');
+  if (termsOfServiceLink) {
+    termsOfServiceLink.textContent = chrome.i18n.getMessage('termsOfService');
+  }
+
+  const confirmModalTitle = document.getElementById('confirm-modal-title');
+  if (confirmModalTitle) {
+    confirmModalTitle.textContent = chrome.i18n.getMessage('confirmModalTitle');
+  }
+
+  const confirmModalCancel = document.getElementById('confirm-modal-cancel');
+  if (confirmModalCancel) {
+    confirmModalCancel.textContent = chrome.i18n.getMessage('cancelButton');
+  }
+
+  const confirmModalConfirm = document.getElementById('confirm-modal-confirm');
+  if (confirmModalConfirm) {
+    confirmModalConfirm.textContent = chrome.i18n.getMessage('confirmButton');
+  }
+
+  const createFlowModalTitle = document.getElementById('createFlowModalTitle');
+  if (createFlowModalTitle) {
+    createFlowModalTitle.textContent = chrome.i18n.getMessage('createNewFlowModalTitle');
+  }
+
+  const flowNameLabel = document.getElementById('flowNameLabel');
+  if (flowNameLabel) {
+    flowNameLabel.textContent = chrome.i18n.getMessage('flowNameLabel');
+  }
+
+  const flowDescriptionLabel = document.getElementById('flowDescriptionLabel');
+  if (flowDescriptionLabel) {
+    flowDescriptionLabel.textContent = chrome.i18n.getMessage('flowDescriptionLabel');
+  }
+
+  const stepsLabel = document.getElementById('stepsLabel');
+  if (stepsLabel) {
+    stepsLabel.textContent = chrome.i18n.getMessage('stepsLabel');
+  }
+
+  const noStepsAddedYet = document.getElementById('noStepsAddedYet');
+  if (noStepsAddedYet) {
+    noStepsAddedYet.textContent = chrome.i18n.getMessage('noStepsAddedYet');
+  }
+
+  const addStepButton = document.getElementById('addStepButton');
+  if (addStepButton) {
+    addStepButton.textContent = chrome.i18n.getMessage('addStepButton');
+  }
+
+  const cancelCreateFlowButton = document.getElementById('cancelCreateFlowButton');
+  if (cancelCreateFlowButton) {
+    cancelCreateFlowButton.textContent = chrome.i18n.getMessage('cancelButton');
+  }
+
+  const createFlowButtonModal = document.getElementById('createFlowButtonModal');
+  if (createFlowButtonModal) {
+    createFlowButtonModal.textContent = chrome.i18n.getMessage('createFlowButtonModal');
+  }
+
+  const addStepModalTitle = document.getElementById('addStepModalTitle');
+  if (addStepModalTitle) {
+    addStepModalTitle.textContent = chrome.i18n.getMessage('addStepModalTitle');
+  }
+
+  const urlLabel = document.getElementById('urlLabel');
+  if (urlLabel) {
+    urlLabel.textContent = chrome.i18n.getMessage('urlLabel');
+  }
+
+  const stepTitleLabel = document.getElementById('stepTitleLabel');
+  if (stepTitleLabel) {
+    stepTitleLabel.textContent = chrome.i18n.getMessage('stepTitleLabel');
+  }
+
+  const customScriptLabel = document.getElementById('customScriptLabel');
+  if (customScriptLabel) {
+    customScriptLabel.textContent = chrome.i18n.getMessage('customScriptLabel');
+  }
+
+  const customScriptDescription = document.getElementById('customScriptDescription');
+  if (customScriptDescription) {
+    customScriptDescription.textContent = chrome.i18n.getMessage('customScriptDescription');
+  }
+
+  const addStepButtonModal = document.getElementById('addStepButtonModal');
+  if (addStepButtonModal) {
+    addStepButtonModal.textContent = chrome.i18n.getMessage('addStepButtonModal');
+  }
+
+  const cancelAddStepButton = document.getElementById('cancelAddStepButton');
+  if (cancelAddStepButton) {
+    cancelAddStepButton.textContent = chrome.i18n.getMessage('cancelButton');
+  }
+
+  const toastMessage = document.getElementById('toast-message');
+  if (toastMessage) {
+    toastMessage.textContent = chrome.i18n.getMessage('toastMessage');
+  }
+
+  enableDarkModeLabel = document.getElementById('enableDarkModeLabel');
+  if (enableDarkModeLabel) {
+    enableDarkModeLabel.textContent = chrome.i18n.getMessage('enableDarkModeLabel');
+  }
+
+  enableDarkModeDescription = document.getElementById('enableDarkModeDescription');
+  if (enableDarkModeDescription) {
+    enableDarkModeDescription.textContent = chrome.i18n.getMessage('enableDarkModeDescription');
+  }
 }
 
 
@@ -168,6 +464,25 @@ async function loadSettings() {
   try {
     const response = await chrome.storage.sync.get('settings');
     settings = response.settings || {};
+    // Detect browser language on first install if no language is set
+    if (!settings.language) {
+      const browserLanguage = chrome.i18n.getUILanguage();
+      // Check if the browser language is one of our supported locales
+      const supportedLocales = ['en', 'fr', 'es', 'ar', 'zh', 'ja', 'ko'];
+      const detectedLanguage = supportedLocales.find(locale => browserLanguage.startsWith(locale)) || 'en';
+      settings.language = detectedLanguage;
+      // Save the detected language to storage
+      await chrome.storage.sync.set({ settings: settings });
+      console.log('Detected and saved language:', detectedLanguage);
+    }
+
+    // Detect browser theme on first install if no dark mode setting is found
+    if (settings.darkModeEnabled === undefined) {
+      const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      settings.darkModeEnabled = prefersDarkMode;
+      await chrome.storage.sync.set({ settings: settings });
+      console.log('Detected and saved dark mode preference:', prefersDarkMode);
+    }
   } catch (error) {
     console.error('Settings loading error:', error);
     showToast('Failed to load settings');
@@ -178,25 +493,32 @@ async function handleLanguageChange(event) {
   const newLanguage = event.target.value;
   settings.language = newLanguage;
   await chrome.storage.sync.set({ settings });
-  // Reload the extension to apply language changes
-  chrome.runtime.reload();
+  // Re-apply i18n messages to update the UI without reloading the extension
+  applyI18nMessages();
+  // Re-populate the dropdown to reflect the newly selected language
+  populateLanguageDropdown();
 }
 
 async function populateLanguageDropdown() {
-  const acceptLanguages = await chrome.i18n.getAcceptLanguages();
+  const availableLocales = await getAvailableLocales();
   const currentUILanguage = chrome.i18n.getUILanguage();
-
-  // Add current UI language first if not already in acceptLanguages
-  if (!acceptLanguages.includes(currentUILanguage)) {
-    acceptLanguages.unshift(currentUILanguage);
-  }
 
   languageSelect.innerHTML = ''; // Clear existing options
 
-  for (const lang of acceptLanguages) {
+  const languageNames = {
+    'en': 'English',
+    'fr': 'Français',
+    'es': 'Español',
+    'ar': 'العربية',
+    'zh': '中文 (简体)',
+    'ja': '日本語',
+    'ko': '한국어'
+  };
+
+  for (const lang of availableLocales) {
     const option = document.createElement('option');
     option.value = lang;
-    option.textContent = lang; // Display the language code for now
+    option.textContent = languageNames[lang] || lang; // Display the full native name, fallback to code if not found
     if (lang === (settings.language || currentUILanguage)) {
       option.selected = true;
     }
@@ -206,6 +528,19 @@ async function populateLanguageDropdown() {
   // Optionally, add more user-friendly names for common languages
   // This would require a mapping or more sophisticated i18n setup
   // For now, just using the language code
+}
+
+async function getAvailableLocales() {
+  return new Promise(resolve => {
+    chrome.runtime.getPackageDirectoryEntry(function(root) {
+      root.getDirectory('_locales', {create: false}, function(localesDir) {
+        localesDir.createReader().readEntries(function(entries) {
+          const locales = entries.filter(entry => entry.isDirectory).map(entry => entry.name);
+          resolve(locales);
+        });
+      });
+    });
+  });
 }
 
 function setupEventListeners() {
@@ -229,6 +564,15 @@ function setupEventListeners() {
   // Settings form
   if (settingsForm) settingsForm.addEventListener('submit', handleSettingsSave);
   if (languageSelect) languageSelect.addEventListener('change', handleLanguageChange);
+  
+  const saveSettingsBtn = document.getElementById('save-settings-btn');
+  if (saveSettingsBtn) {
+    saveSettingsBtn.addEventListener('click', handleSettingsSave);
+  }
+
+  if (darkModeEnabled) {
+    darkModeEnabled.addEventListener('change', toggleDarkMode);
+  }
   
   // Export/Import data
   if (exportDataBtn) exportDataBtn.addEventListener('click', handleExportData);
@@ -917,12 +1261,17 @@ function handleSettingsSave(e) {
   
   const formData = {
     autoSave: autoSaveCheckbox?.checked || false,
-    darkMode: darkModeCheckbox?.checked || false,
-    syncAcrossDevices: syncCheckbox?.checked || false
+    syncAcrossDevices: syncCheckbox?.checked || false,
+    detectionSensitivity: detectionSensitivity.value,
+    notificationsEnabled: notificationsEnabled.checked,
+    encryptionEnabled: encryptionEnabled.checked,
+    darkModeEnabled: darkModeEnabled.checked,
+    language: languageSelect.value
   };
 
   chrome.storage.sync.set({ settings: formData }, () => {
     showToast('Settings saved successfully');
+    applyI18nMessages(); // Apply i18n messages after saving settings
     chrome.runtime.sendMessage({ 
       action: 'update-settings',
       settings: formData 

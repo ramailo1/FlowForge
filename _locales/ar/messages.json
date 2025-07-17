@@ -1,0 +1,201 @@
+{
+  "extensionName": {
+    "message": "فلو فورج",
+    "description": "اسم الإضافة."
+  },
+  "extensionDescription": {
+    "message": "تعلم وأتمتة تسلسلات التصفح عبر المواقع"
+  },
+  "createNewFlowTitle": {
+    "message": "إنشاء تدفق جديد"
+  },
+  "settingsTitle": {
+    "message": "الإعدادات"
+  },
+  "searchFlowsPlaceholder": {
+    "message": "البحث عن التدفقات..."
+  },
+  "noFlowsYetHeader": {
+    "message": "لا توجد تدفقات بعد"
+  },
+  "noFlowsYetDescription": {
+    "message": "ابدأ التصفح لاكتشاف التدفقات تلقائيًا أو أنشئ واحدًا يدويًا."
+  },
+  "createFlowButton": {
+    "message": "إنشاء تدفق"
+  },
+  "footerText": {
+    "message": "فلو فورج الإصدار 1.0.0"
+  },
+  "optionsLink": {
+    "message": "الخيارات"
+  },
+  "supportDeveloperTitle": {
+    "message": "دعم المطور"
+  },
+  "buyMeACoffee": {
+    "message": "اشترِ لي قهوة"
+  },
+  "createNewFlowModalTitle": {
+    "message": "إنشاء تدفق جديد"
+  },
+  "flowNameLabel": {
+    "message": "اسم التدفق"
+  },
+  "flowDescriptionLabel": {
+    "message": "الوصف (اختياري)"
+  },
+  "stepsLabel": {
+    "message": "الخطوات"
+  },
+  "noStepsAddedYet": {
+    "message": "لم تتم إضافة خطوات بعد. انقر على \"إضافة خطوة\" أدناه."
+  },
+  "addStepButton": {
+    "message": "إضافة خطوة"
+  },
+  "recordFlowButton": {
+    "message": "تسجيل التدفق"
+  },
+  "cancelButton": {
+    "message": "إلغاء"
+  },
+  "createFlowButtonModal": {
+    "message": "إنشاء تدفق"
+  },
+  "addStepModalTitle": {
+    "message": "إضافة خطوة"
+  },
+  "urlLabel": {
+    "message": "عنوان URL"
+  },
+  "stepTitleLabel": {
+    "message": "العنوان (اختياري)"
+  },
+  "customScriptLabel": {
+    "message": "نص برمجي مخصص (اختياري)"
+  },
+  "customScriptDescription": {
+    "message": "سيتم تشغيل هذا النص البرمجي بعد تحميل الصفحة."
+  },
+  "addStepButtonModal": {
+    "message": "إضافة خطوة"
+  },
+  "backToExtension": {
+    "message": "العودة إلى الإضافة"
+  },
+  "optionsTitle": {
+    "message": "خيارات فلو فورج"
+  },
+  "flowsTab": {
+    "message": "التدفقات"
+  },
+  "settingsTab": {
+    "message": "الإعدادات"
+  },
+  "dataManagementTab": {
+    "message": "إدارة البيانات"
+  },
+  "aboutTab": {
+    "message": "حول"
+  },
+  "manageFlowsHeader": {
+    "message": "إدارة التدفقات"
+  },
+  "newFlowButton": {
+    "message": "تدفق جديد"
+  },
+  "extensionSettingsHeader": {
+    "message": "إعدادات الإضافة"
+  },
+  "languageSelectionLabel": {
+    "message": "اللغة"
+  },
+  "languageSelectionDescription": {
+    "message": "حدد اللغة لواجهة الإضافة."
+  },
+  "flowDetectionSensitivityHeader": {
+    "message": "حساسية اكتشاف التدفق"
+  },
+  "flowDetectionSensitivityDescription": {
+    "message": "اضبط مدى حساسية فلو فورج لاكتشاف أنماط التنقل المتكررة."
+  },
+  "sensitivityLow": {
+    "message": "منخفض (يتطلب المزيد من التكرارات)"
+  },
+  "sensitivityMedium": {
+    "message": "متوسط (افتراضي)"
+  },
+  "sensitivityHigh": {
+    "message": "مرتفع (يقترح التدفقات بسرعة أكبر)"
+  },
+  "enableNotificationsLabel": {
+    "message": "تمكين الإشعارات"
+  },
+  "enableNotificationsDescription": {
+    "message": "تلقي الإشعارات عند اكتشاف التدفقات أو عند توفر اقتراحات الأتمتة."
+  },
+  "enableEncryptionLabel": {
+    "message": "تمكين التشفير"
+  },
+  "enableEncryptionDescription": {
+    "message": "تشفير بيانات التدفق المخزنة لخصوصية إضافية. ملاحظة: قد يؤثر هذا قليلاً على الأداء."
+  },
+  "saveSettingsButton": {
+    "message": "حفظ الإعدادات"
+  },
+  "dataManagementHeader": {
+    "message": "إدارة البيانات"
+  },
+  "exportDataHeader": {
+    "message": "تصدير البيانات"
+  },
+  "exportDataDescription": {
+    "message": "تصدير جميع التدفقات والإعدادات كملف JSON."
+  },
+  "exportDataButton": {
+    "message": "تصدير البيانات"
+  },
+  "importDataHeader": {
+    "message": "استيراد البيانات"
+  },
+  "importDataDescription": {
+    "message": "استيراد التدفقات والإعدادات من ملف JSON تم تصديره مسبقًا."
+  },
+  "importDataButton": {
+    "message": "استيراد البيانات"
+  },
+  "clearDataHeader": {
+    "message": "مسح البيانات"
+  },
+  "clearDataDescription": {
+    "message": "حذف جميع التدفقات المخزنة وإعادة تعيين الإعدادات. لا يمكن التراجع عن هذا الإجراء."
+  },
+  "clearDataButton": {
+    "message": "مسح البيانات"
+  },
+  "clearHistoryButton": {
+    "message": "مسح السجل"
+  },
+  "aboutHeader": {
+    "message": "حول فلو فورج"
+  },
+  "versionInfo": {
+    "message": "الإصدار {version}"
+  },
+  "developedBy": {
+    "message": "تم التطوير بواسطة اسمك/شركتك"
+  },
+  "supportDevelopment": {
+    "message": "دعم التطوير"
+  },
+  "privacyPolicy": {
+    "message": "سياسة الخصوصية"
+  },
+  "termsOfService": {
+    "message": "شروط الخدمة"
+  },
+  "confirmModalTitle": {
+    "message": "تأكيد الإجراء"
+  }
+}

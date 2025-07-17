@@ -112,9 +112,18 @@
                     <p class="mt-1 text-sm text-gray-500" id="languageSelectionDescription">__MSG_languageSelectionDescription__</p>
                     <div class="mt-2">
                       <select id="language-select" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                        <!-- Options will be populated by JavaScript -->
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="es">Español</option>
+                        <option value="ar">العربية</option>
+                        <option value="zh">中文 (简体)</option>
+                        <option value="ja">日本語</option>
+                        <option value="ko">한국어</option>
                       </select>
                     </div>
+                    <button id="reload-extension-btn" class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Reload Extension
+                    </button>
                   </div>
 
                   <!-- Detection sensitivity -->
@@ -152,6 +161,17 @@
                     </div>
                   </div>
                   
+                  <!-- Dark Mode -->
+                  <div class="relative flex items-start">
+                    <div class="flex items-center h-5">
+                      <input id="dark-mode-enabled" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <label for="dark-mode-enabled" class="font-medium text-gray-700" id="enableDarkModeLabel">__MSG_enableDarkModeLabel__</label>
+                      <p class="text-gray-500" id="enableDarkModeDescription">__MSG_enableDarkModeDescription__</p>
+                    </div>
+                  </div>
+
                   <!-- Save button -->
                   <div class="pt-5">
                     <div class="flex justify-end">
@@ -341,7 +361,7 @@
           <div class="space-y-4">
             <div>
               <label for="flow-name" class="block text-sm font-medium text-gray-700">Flow Name</label>
-              <input type="text" id="flow-name" name="flow-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="My Flow" required>
+              <input type="text" id="flow-name" name="flow-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="My Flow">
             </div>
             <div>
               <label for="flow-description" class="block text-sm font-medium text-gray-700">Description (optional)</label>

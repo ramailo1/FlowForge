@@ -120,6 +120,39 @@ We welcome contributions! If you'd like to improve FlowForge, feel free to:
 
 ---
 
+## 🛠 Development
+
+### Prerequisites
+- Node.js v16+
+- Chrome browser
+
+### Setup
+```
+npm install
+```
+
+### Testing
+```
+npm test
+```
+
+### Building
+```
+npm run build
+```
+
+## 🗺 Roadmap
+
+### v1.1 (Upcoming)
+- Enhanced flow detection algorithms
+- Cross-browser support (Firefox, Edge)
+- Cloud sync backup option
+
+### v1.2 (Planned)
+- Mobile companion app
+- Advanced scheduling options
+- Team collaboration features
+
 ## 📄 License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).

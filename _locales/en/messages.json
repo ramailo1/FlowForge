@@ -173,9 +173,15 @@
   },
   "clearDataButton": {
     "message": "Clear Data"
-  },\
+  },
   "clearHistoryButton": {
     "message": "Clear History"
+  },
+  "enableDarkModeLabel": {
+    "message": "Enable Dark Mode"
+  },
+  "enableDarkModeDescription": {
+    "message": "Switch the extension interface to a dark theme."
   },
   "aboutHeader": {
     "message": "About FlowForge"

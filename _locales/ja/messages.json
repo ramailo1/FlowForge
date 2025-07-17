@@ -1,0 +1,237 @@
+{
+  "extensionName": {
+    "message": "FlowForge",
+    "description": "The name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Learn and automate your browsing sequences across websites"
+  },
+  "createNewFlowTitle": {
+    "message": "新しいフローを作成"
+  },
+  "settingsTitle": {
+    "message": "設定"
+  },
+  "searchFlowsPlaceholder": {
+    "message": "フローを検索..."
+  },
+  "noFlowsYetHeader": {
+    "message": "まだフローがありません"
+  },
+  "noFlowsYetDescription": {
+    "message": "ブラウジングを開始してフローを自動検出するか、手動で作成してください。"
+  },
+  "createFlowButton": {
+    "message": "フローを作成"
+  },
+  "footerText": {
+    "message": "FlowForge v1.0.0"
+  },
+  "optionsLink": {
+    "message": "オプション"
+  },
+  "supportDeveloperTitle": {
+    "message": "開発者をサポート"
+  },
+  "buyMeACoffee": {
+    "message": "コーヒーを買う"
+  },
+  "createNewFlowModalTitle": {
+    "message": "新しいフローを作成"
+  },
+  "flowNameLabel": {
+    "message": "フロー名"
+  },
+  "flowDescriptionLabel": {
+    "message": "説明 (オプション)"
+  },
+  "stepsLabel": {
+    "message": "ステップ"
+  },
+  "noStepsAddedYet": {
+    "message": "まだステップが追加されていません。「ステップを追加」をクリックしてください。"
+  },
+  "addStepButton": {
+    "message": "ステップを追加"
+  },
+  "recordFlowButton": {
+    "message": "フローを記録"
+  },
+  "cancelButton": {
+    "message": "キャンセル"
+  },
+  "createFlowButtonModal": {
+    "message": "フローを作成"
+  },
+  "addStepModalTitle": {
+    "message": "ステップを追加"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "stepTitleLabel": {
+    "message": "タイトル (オプション)"
+  },
+  "customScriptLabel": {
+    "message": "カスタムスクリプト (オプション)"
+  },
+  "customScriptDescription": {
+    "message": "このスクリプトはページ読み込み後に実行されます。"
+  },
+  "addStepButtonModal": {
+    "message": "ステップを追加"
+  },
+  "backToExtension": {
+    "message": "拡張機能に戻る"
+  },
+  "optionsTitle": {
+    "message": "FlowForge オプション"
+  },
+  "flowsTab": {
+    "message": "フロー"
+  },
+  "settingsTab": {
+    "message": "設定"
+  },
+  "dataManagementTab": {
+    "message": "データ管理"
+  },
+  "aboutTab": {
+    "message": "について"
+  },
+  "manageFlowsHeader": {
+    "message": "フローを管理"
+  },
+  "newFlowButton": {
+    "message": "新しいフロー"
+  },
+  "extensionSettingsHeader": {
+    "message": "拡張機能設定"
+  },
+  "languageSelectionLabel": {
+    "message": "言語"
+  },
+  "languageSelectionDescription": {
+    "message": "拡張機能インターフェースの言語を選択します。"
+  },
+  "flowDetectionSensitivityHeader": {
+    "message": "フロー検出感度"
+  },
+  "flowDetectionSensitivityDescription": {
+    "message": "FlowForgeが繰り返しのナビゲーションパターンを検出する感度を調整します。"
+  },
+  "sensitivityLow": {
+    "message": "低 (より多くの繰り返しが必要)"
+  },
+  "sensitivityMedium": {
+    "message": "中 (デフォルト)"
+  },
+  "sensitivityHigh": {
+    "message": "高 (より早くフローを提案)"
+  },
+  "enableNotificationsLabel": {
+    "message": "通知を有効にする"
+  },
+  "enableNotificationsDescription": {
+    "message": "フローが検出されたとき、または自動化の提案が利用可能になったときに通知を受け取ります。"
+  },
+  "enableEncryptionLabel": {
+    "message": "暗号化を有効にする"
+  },
+  "enableEncryptionDescription": {
+    "message": "追加のプライバシーのために保存されたフローデータを暗号化します。注意: これによりパフォーマンスにわずかな影響を与える可能性があります。"
+  },
+  "saveSettingsButton": {
+    "message": "設定を保存"
+  },
+  "dataManagementHeader": {
+    "message": "データ管理"
+  },
+  "exportDataHeader": {
+    "message": "データをエクスポート"
+  },
+  "exportDataDescription": {
+    "message": "すべてのフローと設定をJSONファイルとしてエクスポートします。"
+  },
+  "exportDataButton": {
+    "message": "データをエクスポート"
+  },
+  "importDataHeader": {
+    "message": "データをインポート"
+  },
+  "importDataDescription": {
+    "message": "以前にエクスポートしたJSONファイルからフローと設定をインポートします。"
+  },
+  "importDataButton": {
+    "message": "データをインポート"
+  },
+  "clearDataHeader": {
+    "message": "データをクリア"
+  },
+  "clearDataDescription": {
+    "message": "保存されているすべてのフローを削除し、設定をリセットします。この操作は元に戻せません。"
+  },
+  "clearDataButton": {
+    "message": "データをクリア"
+  },
+  "clearHistoryButton": {
+    "message": "履歴をクリア"
+  },
+  "aboutHeader": {
+    "message": "FlowForge について"
+  },
+  "versionInfo": {
+    "message": "バージョン {version}"
+  },
+  "developedBy": {
+    "message": "開発者: Your Name/Company"
+  },
+  "supportDevelopment": {
+    "message": "開発をサポート"
+  },
+  "privacyPolicy": {
+    "message": "プライバシーポリシー"
+  },
+  "termsOfService": {
+    "message": "利用規約"
+  },
+  "confirmModalTitle": {
+    "message": "アクションを確認"
+  },
+  "confirmButton": {
+    "message": "Confirm"
+  },
+  "toastMessage": {
+    "message": "Settings saved successfully!"
+  },
+  "dataClearedNotification": {
+    "message": "データがクリアされました。"
+  },
+  "settingsSavedNotification": {
+    "message": "設定が保存されました。"
+  },
+  "errorNotification": {
+    "message": "エラーが発生しました: {error}"
+  },
+  "flowNamePlaceholder": {
+    "message": "例: ログインフロー"
+  },
+  "flowDescriptionPlaceholder": {
+    "message": "例: ユーザーがウェブサイトにログインする手順"
+  },
+  "stepTitlePlaceholder": {
+    "message": "例: ユーザー名を入力"
+  },
+  "customScriptPlaceholder": {
+    "message": "// ここにカスタムJavaScriptコードを記述します"
+  },
+  "urlPlaceholder": {
+    "message": "例: https://example.com/login"
+  },
+  "confirmClearDataTitle": {
+    "message": "データのクリアを確認"
+  },
+  "confirmClearDataMessage": {
+    "message": "すべての保存されたフローと設定をクリアしてもよろしいですか？この操作は元に戻せません。"
+  }
+}

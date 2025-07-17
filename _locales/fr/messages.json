@@ -1,0 +1,201 @@
+{
+  "extensionName": {
+    "message": "FlowForge",
+    "description": "Nom de l'extension."
+  },
+  "extensionDescription": {
+    "message": "Apprenez et automatisez vos séquences de navigation sur les sites web"
+  },
+  "createNewFlowTitle": {
+    "message": "Créer un nouveau flux"
+  },
+  "settingsTitle": {
+    "message": "Paramètres"
+  },
+  "searchFlowsPlaceholder": {
+    "message": "Rechercher des flux..."
+  },
+  "noFlowsYetHeader": {
+    "message": "Aucun flux pour l'instant"
+  },
+  "noFlowsYetDescription": {
+    "message": "Commencez à naviguer pour détecter automatiquement les flux ou en créer un manuellement."
+  },
+  "createFlowButton": {
+    "message": "Créer un flux"
+  },
+  "footerText": {
+    "message": "FlowForge v1.0.0"
+  },
+  "optionsLink": {
+    "message": "Options"
+  },
+  "supportDeveloperTitle": {
+    "message": "Soutenir le développeur"
+  },
+  "buyMeACoffee": {
+    "message": "Offrez-moi un café"
+  },
+  "createNewFlowModalTitle": {
+    "message": "Créer un nouveau flux"
+  },
+  "flowNameLabel": {
+    "message": "Nom du flux"
+  },
+  "flowDescriptionLabel": {
+    "message": "Description (facultatif)"
+  },
+  "stepsLabel": {
+    "message": "Étapes"
+  },
+  "noStepsAddedYet": {
+    "message": "Aucune étape ajoutée pour l'instant. Cliquez sur \"Ajouter une étape\" ci-dessous."
+  },
+  "addStepButton": {
+    "message": "Ajouter une étape"
+  },
+  "recordFlowButton": {
+    "message": "Enregistrer le flux"
+  },
+  "cancelButton": {
+    "message": "Annuler"
+  },
+  "createFlowButtonModal": {
+    "message": "Créer un flux"
+  },
+  "addStepModalTitle": {
+    "message": "Ajouter une étape"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "stepTitleLabel": {
+    "message": "Titre (facultatif)"
+  },
+  "customScriptLabel": {
+    "message": "Script personnalisé (facultatif)"
+  },
+  "customScriptDescription": {
+    "message": "Ce script s'exécutera après le chargement de la page."
+  },
+  "addStepButtonModal": {
+    "message": "Ajouter une étape"
+  },
+  "backToExtension": {
+    "message": "Retour à l'extension"
+  },
+  "optionsTitle": {
+    "message": "Options FlowForge"
+  },
+  "flowsTab": {
+    "message": "Flux"
+  },
+  "settingsTab": {
+    "message": "Paramètres"
+  },
+  "dataManagementTab": {
+    "message": "Gestion des données"
+  },
+  "aboutTab": {
+    "message": "À propos"
+  },
+  "manageFlowsHeader": {
+    "message": "Gérer les flux"
+  },
+  "newFlowButton": {
+    "message": "Nouveau flux"
+  },
+  "extensionSettingsHeader": {
+    "message": "Paramètres de l'extension"
+  },
+  "languageSelectionLabel": {
+    "message": "Langue"
+  },
+  "languageSelectionDescription": {
+    "message": "Sélectionnez la langue de l'interface de l'extension."
+  },
+  "flowDetectionSensitivityHeader": {
+    "message": "Sensibilité de détection de flux"
+  },
+  "flowDetectionSensitivityDescription": {
+    "message": "Ajustez la sensibilité de FlowForge à la détection des modèles de navigation répétés."
+  },
+  "sensitivityLow": {
+    "message": "Faible (nécessite plus de répétitions)"
+  },
+  "sensitivityMedium": {
+    "message": "Moyenne (par défaut)"
+  },
+  "sensitivityHigh": {
+    "message": "Élevée (suggère les flux plus rapidement)"
+  },
+  "enableNotificationsLabel": {
+    "message": "Activer les notifications"
+  },
+  "enableNotificationsDescription": {
+    "message": "Recevez des notifications lorsque des flux sont détectés ou lorsque des suggestions d'automatisation sont disponibles."
+  },
+  "enableEncryptionLabel": {
+    "message": "Activer le chiffrement"
+  },
+  "enableEncryptionDescription": {
+    "message": "Chiffrer les données de flux stockées pour une confidentialité accrue. Remarque : cela peut légèrement affecter les performances."
+  },
+  "saveSettingsButton": {
+    "message": "Enregistrer les paramètres"
+  },
+  "dataManagementHeader": {
+    "message": "Gestion des données"
+  },
+  "exportDataHeader": {
+    "message": "Exporter les données"
+  },
+  "exportDataDescription": {
+    "message": "Exportez tous vos flux et paramètres sous forme de fichier JSON."
+  },
+  "exportDataButton": {
+    "message": "Exporter les données"
+  },
+  "importDataHeader": {
+    "message": "Importer des données"
+  },
+  "importDataDescription": {
+    "message": "Importez des flux et des paramètres à partir d'un fichier JSON précédemment exporté."
+  },
+  "importDataButton": {
+    "message": "Importer des données"
+  },
+  "clearDataHeader": {
+    "message": "Effacer les données"
+  },
+  "clearDataDescription": {
+    "message": "Supprimez tous les flux stockés et réinitialisez les paramètres. Cette action est irréversible."
+  },
+  "clearDataButton": {
+    "message": "Effacer les données"
+  },
+  "clearHistoryButton": {
+    "message": "Effacer l'historique"
+  },
+  "aboutHeader": {
+    "message": "À propos de FlowForge"
+  },
+  "versionInfo": {
+    "message": "Version {version}"
+  },
+  "developedBy": {
+    "message": "Développé par Votre Nom/Entreprise"
+  },
+  "supportDevelopment": {
+    "message": "Soutenir le développement"
+  },
+  "privacyPolicy": {
+    "message": "Politique de confidentialité"
+  },
+  "termsOfService": {
+    "message": "Conditions d'utilisation"
+  },
+  "confirmModalTitle": {
+    "message": "Confirmer l'action"
+  }
+}

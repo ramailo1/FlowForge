@@ -1,0 +1,207 @@
+{
+  "extensionName": {
+    "message": "FlowForge",
+    "description": "扩展程序的名称。"
+  },
+  "extensionDescription": {
+    "message": "学习并自动化您在网站上的浏览序列"
+  },
+  "createNewFlowTitle": {
+    "message": "创建新流程"
+  },
+  "settingsTitle": {
+    "message": "设置"
+  },
+  "searchFlowsPlaceholder": {
+    "message": "搜索流程..."
+  },
+  "noFlowsYetHeader": {
+    "message": "暂无流程"
+  },
+  "noFlowsYetDescription": {
+    "message": "开始浏览以自动检测流程或手动创建一个。"
+  },
+  "createFlowButton": {
+    "message": "创建流程"
+  },
+  "footerText": {
+    "message": "FlowForge v1.0.0"
+  },
+  "optionsLink": {
+    "message": "选项"
+  },
+  "supportDeveloperTitle": {
+    "message": "支持开发者"
+  },
+  "buyMeACoffee": {
+    "message": "给我买杯咖啡"
+  },
+  "createNewFlowModalTitle": {
+    "message": "创建新流程"
+  },
+  "flowNameLabel": {
+    "message": "流程名称"
+  },
+  "flowDescriptionLabel": {
+    "message": "描述 (可选)"
+  },
+  "stepsLabel": {
+    "message": "步骤"
+  },
+  "noStepsAddedYet": {
+    "message": "尚未添加步骤。点击下方的“添加步骤”。"
+  },
+  "addStepButton": {
+    "message": "添加步骤"
+  },
+  "recordFlowButton": {
+    "message": "录制流程"
+  },
+  "cancelButton": {
+    "message": "取消"
+  },
+  "createFlowButtonModal": {
+    "message": "创建流程"
+  },
+  "addStepModalTitle": {
+    "message": "添加步骤"
+  },
+  "urlLabel": {
+    "message": "URL"
+  },
+  "stepTitleLabel": {
+    "message": "标题 (可选)"
+  },
+  "customScriptLabel": {
+    "message": "自定义脚本 (可选)"
+  },
+  "customScriptDescription": {
+    "message": "此脚本将在页面加载后运行。"
+  },
+  "addStepButtonModal": {
+    "message": "添加步骤"
+  },
+  "backToExtension": {
+    "message": "返回扩展程序"
+  },
+  "optionsTitle": {
+    "message": "FlowForge 选项"
+  },
+  "flowsTab": {
+    "message": "流程"
+  },
+  "settingsTab": {
+    "message": "设置"
+  },
+  "dataManagementTab": {
+    "message": "数据管理"
+  },
+  "aboutTab": {
+    "message": "关于"
+  },
+  "manageFlowsHeader": {
+    "message": "管理流程"
+  },
+  "newFlowButton": {
+    "message": "新流程"
+  },
+  "extensionSettingsHeader": {
+    "message": "扩展程序设置"
+  },
+  "languageSelectionLabel": {
+    "message": "语言"
+  },
+  "languageSelectionDescription": {
+    "message": "选择扩展程序界面的语言。"
+  },
+  "flowDetectionSensitivityHeader": {
+    "message": "流程检测灵敏度"
+  },
+  "flowDetectionSensitivityDescription": {
+    "message": "调整 FlowForge 检测重复导航模式的灵敏度。"
+  },
+  "sensitivityLow": {
+    "message": "低 (需要更多重复)"
+  },
+  "sensitivityMedium": {
+    "message": "中 (默认)"
+  },
+  "sensitivityHigh": {
+    "message": "高 (更快地建议流程)"
+  },
+  "enableNotificationsLabel": {
+    "message": "启用通知"
+  },
+  "enableNotificationsDescription": {
+    "message": "当检测到流程或有自动化建议可用时接收通知。"
+  },
+  "enableEncryptionLabel": {
+    "message": "启用加密"
+  },
+  "enableEncryptionDescription": {
+    "message": "加密存储的流程数据以增加隐私。注意：这可能会轻微影响性能。"
+  },
+  "saveSettingsButton": {
+    "message": "保存设置"
+  },
+  "dataManagementHeader": {
+    "message": "数据管理"
+  },
+  "exportDataHeader": {
+    "message": "导出数据"
+  },
+  "exportDataDescription": {
+    "message": "将所有流程和设置导出为 JSON 文件。"
+  },
+  "exportDataButton": {
+    "message": "导出数据"
+  },
+  "importDataHeader": {
+    "message": "导入数据"
+  },
+  "importDataDescription": {
+    "message": "从以前导出的 JSON 文件导入流程和设置。"
+  },
+  "importDataButton": {
+    "message": "导入数据"
+  },
+  "clearDataHeader": {
+    "message": "清除数据"
+  },
+  "clearDataDescription": {
+    "message": "删除所有存储的流程并重置设置。此操作无法撤销。"
+  },
+  "clearDataButton": {
+    "message": "清除数据"
+  },
+  "clearHistoryButton": {
+    "message": "清除历史记录"
+  },
+  "aboutHeader": {
+    "message": "关于 FlowForge"
+  },
+  "versionInfo": {
+    "message": "版本 {version}"
+  },
+  "developedBy": {
+    "message": "开发者：您的姓名/公司"
+  },
+  "supportDevelopment": {
+    "message": "支持开发"
+  },
+  "privacyPolicy": {
+    "message": "隐私政策"
+  },
+  "termsOfService": {
+    "message": "服务条款"
+  },
+  "confirmModalTitle": {
+    "message": "确认操作"
+  },
+  "confirmButton": {
+    "message": "Confirm"
+  },
+  "toastMessage": {
+    "message": "Settings saved successfully!"
+  }
+}

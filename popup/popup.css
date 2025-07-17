@@ -114,6 +114,20 @@
   background-color: #f8fafc;
 }
 
+/* Make input fields and textareas more visible */
+input[type="text"],
+input[type="url"],
+textarea {
+  border-width: 2px; /* Increase border width */
+  border-color: #6b7280; /* Change to a darker gray (gray-500) */
+}
+
+/* Make placeholder text darker */
+input::placeholder,
+textarea::placeholder {
+  color: #4b5563; /* Change to a darker gray (gray-600) */
+}
+
 /* Custom focus styles */
 input:focus,
 textarea:focus,
@@ -133,6 +147,96 @@ button:focus {
 /* Ensure minimum width for popup */
 body {
   min-width: 400px;
+}
+
+/* Dark Mode Styles */
+html.dark {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+html.dark body {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+html.dark .bg-white {
+  background-color: #2d3748;
+}
+
+html.dark .text-gray-900 {
+  color: #e2e8f0;
+}
+
+html.dark .text-gray-500 {
+  color: #a0aec0;
+}
+
+html.dark .border-gray-200 {
+  border-color: #4a5568;
+}
+
+html.dark .bg-gray-50 {
+  background-color: #2d3748;
+}
+
+html.dark .hover\:bg-gray-100:hover {
+  background-color: #4a5568;
+}
+
+html.dark .text-gray-700 {
+  color: #e2e8f0;
+}
+
+html.dark .text-red-600 {
+  color: #fc8181;
+}
+
+html.dark input[type="text"],
+html.dark input[type="url"],
+html.dark textarea {
+  background-color: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #a0aec0;
+}
+
+html.dark .modal-content {
+  background-color: #2d3748;
+}
+
+html.dark .toast {
+  background-color: #2d3748;
+  color: #e2e8f0;
+}
+
+html.dark .bg-gray-100 {
+  background-color: #4a5568;
+}
+
+html.dark .text-gray-400 {
+  color: #a0aec0;
+}
+
+html.dark .hover\:text-gray-500:hover {
+  color: #e2e8f0;
+}
+
+/* Custom scrollbar for dark mode */
+html.dark ::-webkit-scrollbar-track {
+  background: #2d3748;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 /* Add these rules to popup.css */

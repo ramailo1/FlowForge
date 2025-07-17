@@ -4,6 +4,7 @@
 let isRecording = false;
 let recordedSteps = [];
 let savedFlows = [];
+let settings = {};
 
 // Initialize
 chrome.runtime.onInstalled.addListener(() => {
@@ -14,7 +15,23 @@ chrome.runtime.onInstalled.addListener(() => {
       savedFlows = data.savedFlows;
     }
   });
+  loadSettings(); // Load settings on installation
 });
+
+// Load settings on startup
+chrome.runtime.onStartup.addListener(() => {
+  loadSettings();
+});
+
+async function loadSettings() {
+  try {
+    const response = await chrome.storage.sync.get('settings');
+    settings = response.settings || {};
+    console.log('Background settings loaded:', settings);
+  } catch (error) {
+    console.error('Background settings loading error:', error);
+  }
+}
 
 // Listen for messages from the popup or options page
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -45,7 +62,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       sendResponse({ success: true });
       break;
     case 'update-settings':
-      // Placeholder for updating settings
+      // Reload settings to ensure background script is aware of changes
+      loadSettings();
       sendResponse({ success: true });
       break;
     case 'flowforge-delete-flows':

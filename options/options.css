@@ -22,7 +22,44 @@
 
 /* Tab transitions */
 .tab-link div {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease-in-out;
+}
+
+.tab-link.active div, .tab-link[data-tab="flows"] div {
+  font-weight: 600;
+  transform: scale(1.05);
+  border-bottom: 2px solid #6366f1; /* indigo-500 */
+}
+
+.tab-link:hover div {
+  transform: scale(1.02);
+}
+
+@keyframes tab-fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content.active {
+  animation: tab-fade-in 0.3s ease-out;
+}
+
+/* Ensure tab text is visible in light mode */
+.tab-link.active div {
+  color: #4f46e5; /* Indigo for active tab in light mode */
+}
+
+.tab-link:not(.active) div {
+  color: #6b7280; /* Gray for inactive tabs in light mode */
+}
+
+/* Ensure tab text is visible in dark mode */
+html.dark .tab-link.active div {
+  color: #f0f0f0; /* White for active tab in dark mode */
+}
+
+html.dark .tab-link:not(.active) div {
+  color: #a0aec0; /* Lighter gray for inactive tabs in dark mode */
 }
 
 /* Flow item hover effects */
@@ -94,6 +131,16 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/* Language select styling */
+#language-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%236B7280'%3E%3Cpath d='M6 8l4 4 4-4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
 /* Custom focus styles */
 input:focus,
 textarea:focus,
@@ -143,3 +190,99 @@ input[type="checkbox"]:checked {
     padding: 0 8px;
   }
 }
+
+/* Dark mode styles */
+html.dark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+html.dark body {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+html.dark .tab-content {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+html.dark .flow-item {
+  background-color: #333;
+  border-color: #555;
+  color: #f0f0f0;
+}
+
+html.dark .flow-item:hover {
+  background-color: #444;
+}
+
+html.dark .text-gray-900 {
+  color: #f0f0f0; /* Ensure text is visible in dark mode */
+}
+
+html.dark .flow-item-name {
+  color: #f0f0f0;
+}
+
+html.dark .flow-item-description {
+  color: #ccc;
+}
+
+html.dark .button {
+  background-color: #555;
+  color: #f0f0f0;
+  border-color: #666;
+}
+
+html.dark .button:hover {
+  background-color: #666;
+}
+
+html.dark .tab-link {
+  color: #a0aec0; /* Lighter gray for inactive tabs */
+}
+
+html.dark .tab-link.active {
+  color: #f0f0f0; /* White for active tab */
+  border-color: #4f46e5; /* Indigo border for active tab */
+}
+
+html.dark .tab-link:hover {
+  color: #f0f0f0; /* White on hover */
+  background-color: #333; /* Darker background on hover */
+}
+
+html.dark .tab-link.active:hover {
+  background-color: transparent; /* No background change on hover for active tab */
+}
+
+html.dark input[type="text"],
+html.dark textarea,
+html.dark select {
+  background-color: #333;
+  border-color: #555;
+  color: #f0f0f0;
+}
+
+html.dark input[type="checkbox"] + label::before {
+  background-color: #333;
+  border-color: #555;
+}
+
+html.dark input[type="checkbox"]:checked + label::before {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+html.dark .modal-content {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+
+html.dark .toast {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+/* Add more styles as needed */

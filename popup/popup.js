@@ -23,43 +23,164 @@ const addStepForm = document.getElementById('add-step-form');
 const cancelStepBtn = document.getElementById('cancel-step-btn');
 
 // Function to apply internationalized messages to the UI
-function applyI18nMessages() {
+async function applyI18nMessages() {
+  const currentLanguage = settings.language || chrome.i18n.getUILanguage();
+  const messages = await loadLocaleMessages(currentLanguage);
+
+  const getMessage = (key) => messages[key]?.message || `__MSG_${key}__`;
+
+  document.title = getMessage('extensionName');
+  document.getElementById('appNameHeader').textContent = getMessage('extensionName');
 
 
-  document.getElementById('search-input').placeholder = chrome.i18n.getMessage('searchFlowsPlaceholder');
-  document.getElementById('noFlowsYetHeader').textContent = chrome.i18n.getMessage('noFlowsYetHeader');
-  document.getElementById('noFlowsYetDescription').textContent = chrome.i18n.getMessage('noFlowsYetDescription');
-  document.getElementById('create-first-flow-btn').textContent = chrome.i18n.getMessage('createFlowButton');
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.placeholder = getMessage('searchFlowsPlaceholder');
+  }
+  const noFlowsYetHeader = document.getElementById('noFlowsYetHeader');
+  if (noFlowsYetHeader) {
+    noFlowsYetHeader.textContent = getMessage('noFlowsYetHeader');
+  }
 
-  document.getElementById('createNewFlowModalTitle').textContent = chrome.i18n.getMessage('createNewFlowModalTitle');
-  document.getElementById('flowNameLabel').textContent = chrome.i18n.getMessage('flowNameLabel');
-  document.getElementById('flowDescriptionLabel').textContent = chrome.i18n.getMessage('flowDescriptionLabel');
-  document.getElementById('stepsLabel').textContent = chrome.i18n.getMessage('stepsLabel');
-  document.getElementById('noStepsAddedYet').textContent = chrome.i18n.getMessage('noStepsAddedYet');
-  document.getElementById('addStepButton').textContent = chrome.i18n.getMessage('addStepButton');
-  document.getElementById('record-flow-btn').textContent = chrome.i18n.getMessage('recordFlowButton');
-  document.getElementById('cancelFlowBtn').textContent = chrome.i18n.getMessage('cancelButton');
-  document.getElementById('createFlowBtnModal').textContent = chrome.i18n.getMessage('createFlowButtonModal');
-  document.getElementById('addStepModalTitle').textContent = chrome.i18n.getMessage('addStepModalTitle');
-  document.getElementById('urlLabel').textContent = chrome.i18n.getMessage('urlLabel');
-  document.getElementById('stepTitleLabel').textContent = chrome.i18n.getMessage('stepTitleLabel');
-  document.getElementById('customScriptLabel').textContent = chrome.i18n.getMessage('customScriptLabel');
-  document.getElementById('customScriptDescription').textContent = chrome.i18n.getMessage('customScriptDescription');
-  document.getElementById('addStepButtonModal').textContent = chrome.i18n.getMessage('addStepButtonModal');
+
+  const noFlowsYetDescription = document.getElementById('noFlowsYetDescription');
+  if (noFlowsYetDescription) {
+    noFlowsYetDescription.textContent = getMessage('noFlowsYetDescription');
+  }
+  const createFirstFlowBtn = document.getElementById('create-first-flow-btn');
+  if (createFirstFlowBtn) {
+    createFirstFlowBtn.textContent = getMessage('createFlowButton');
+  }
+
+  const createNewFlowModalTitle = document.getElementById('createNewFlowModalTitle');
+  if (createNewFlowModalTitle) {
+    createNewFlowModalTitle.textContent = getMessage('createNewFlowModalTitle');
+  }
+  const flowNameLabel = document.getElementById('flowNameLabel');
+  if (flowNameLabel) {
+    flowNameLabel.textContent = getMessage('flowNameLabel');
+  }
+  const flowDescriptionLabel = document.getElementById('flowDescriptionLabel');
+  if (flowDescriptionLabel) {
+    flowDescriptionLabel.textContent = getMessage('flowDescriptionLabel');
+  }
+  const stepsLabel = document.getElementById('stepsLabel');
+  if (stepsLabel) {
+    stepsLabel.textContent = getMessage('stepsLabel');
+  }
+  const noStepsAddedYet = document.getElementById('noStepsAddedYet');
+  if (noStepsAddedYet) {
+    noStepsAddedYet.textContent = getMessage('noStepsAddedYet');
+  }
+  const addStepButton = document.getElementById('add-step-btn');
+  if (addStepButton) {
+    addStepButton.textContent = getMessage('addStepButton');
+  }
+   const recordFlowBtn = document.getElementById('record-flow-btn');
+    if (recordFlowBtn) {
+      recordFlowBtn.textContent = getMessage('recordFlowButton');
+    }
+   const cancelFlowBtn = document.getElementById('cancel-flow-btn');
+    if (cancelFlowBtn) {
+      cancelFlowBtn.textContent = getMessage('cancelButton');
+    }
+  const createFlowBtnModal = document.getElementById('createFlowBtnModal');
+   if (createFlowBtnModal) {
+     createFlowBtnModal.textContent = getMessage('createFlowButtonModal');
+   }
+  const addStepModalTitle = document.getElementById('addStepModalTitle');
+   if (addStepModalTitle) {
+     addStepModalTitle.textContent = getMessage('addStepModalTitle');
+   }
+  const urlLabel = document.getElementById('urlLabel');
+   if (urlLabel) {
+     urlLabel.textContent = getMessage('urlLabel');
+   }
+  const stepTitleLabel = document.getElementById('stepTitleLabel');
+   if (stepTitleLabel) {
+     stepTitleLabel.textContent = getMessage('stepTitleLabel');
+   }
+  const customScriptLabel = document.getElementById('customScriptLabel');
+   if (customScriptLabel) {
+     customScriptLabel.textContent = getMessage('customScriptLabel');
+   }
+  const customScriptDescription = document.getElementById('customScriptDescription');
+   if (customScriptDescription) {
+     customScriptDescription.textContent = getMessage('customScriptDescription');
+   }
+  const addStepButtonModal = document.getElementById('addStepButtonModal');
+   if (addStepButtonModal) {
+     addStepButtonModal.textContent = getMessage('addStepButtonModal');
+   }
+
+  const footerText = document.getElementById('footerText');
+  if (footerText) {
+    footerText.textContent = getMessage('footerText');
+  }
+  const optionsLink = document.getElementById('optionsLink');
+  if (optionsLink) {
+    optionsLink.textContent = getMessage('optionsLink');
+  }
+  const buyMeACoffeeLink = document.getElementById('buyMeACoffeeLink');
+  if (buyMeACoffeeLink) {
+    buyMeACoffeeLink.textContent = getMessage('buyMeACoffee');
+  }
 }
 
 // State
-
-// State
+let settings = {};
 let flows = [];
 let filteredFlows = [];
 let currentSteps = [];
 let editingStepIndex = -1;
 
+function toggleDarkMode() {
+  if (settings.darkModeEnabled) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+}
+
+// Function to load locale messages from JSON files
+async function loadLocaleMessages(locale) {
+  try {
+    // Handle en-US case by falling back to en
+    const actualLocale = locale === 'en-US' ? 'en' : locale;
+    const response = await fetch(`/_locales/${actualLocale}/messages.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to load messages for locale ${actualLocale}: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(`Error loading locale messages for ${locale}:`, error);
+    // Fallback to English if the specific locale fails to load
+    if (locale !== 'en') {
+      console.warn(`Falling back to 'en' locale for messages.`);
+      return loadLocaleMessages('en');
+    }
+    return {};
+  }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', init);
 
+async function loadSettings() {
+  try {
+    const result = await chrome.storage.sync.get('settings');
+    settings = result.settings || {};
+    console.log('Settings loaded:', settings);
+  } catch (error) {
+    console.error('Error loading settings:', error);
+  }
+}
+
 async function init() {
+  // Load settings first
+  await loadSettings();
+  toggleDarkMode();
+
   // Set up event listeners
   setupEventListeners();
 
@@ -75,7 +196,7 @@ async function init() {
   });
 
   // Apply internationalized messages
-  applyI18nMessages();
+  await applyI18nMessages();
 
   // Load flows
   await loadFlows();
