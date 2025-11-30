@@ -2,7 +2,7 @@ Here's a more professional and polished version of your README file for **FlowFo
 
 ---
 
-# FlowForge Chrome Extension
+# FlowForge Edge Extension
 
 **FlowForge** is a powerful Chrome extension that learns your browsing habits, suggests automations, and helps you perform repetitive web tasks with a single click.
 
